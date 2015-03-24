@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Advanced settings</string>
+
+    <string name="prox_cal">Prox calibration</string>
+    <string name="prox_naked_cal">Prox naked calibration</string>
+    <string name="port_enabler">Enable diagnostic port</string>
+
+    <string name="main_storage_title">Main storage</string>
+
+    <string name="keys_order_title">Touchscreen keys order</string>
+
+    <string name="reboot_needed">Please, reboot to apply changes.</string>
+
+    <string name="fail">Unknown error.</string>
+
+    <string name="fast_charge">Force fast charge</string>
+
+    <string name="charge_level">Fast charge level, mA</string>
+
+    <string name="palm2sleep_title">Palm2sleep</string>
+
+    <string name="touchscreen_category">Touchscreen</string>
+    <string name="charger_category">Charger</string>
+    <string name="storages_category">Storages</string>
+    <string name="tuning_category">Tuning</string>
+
+    <string name="zram_title">ZRam</string>
+
+    <string name="logging_title">Android logging (logcat)</string>
+</resources>

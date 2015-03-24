@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Дополнительно</string>
+
+    <string name="prox_cal">Калибровка датчика приближения</string>
+
+    <string name="prox_naked_cal">Первичная калибровка датчика приближения</string>
+
+    <string name="port_enabler">Диагностический порт</string>
+
+    <string name="main_storage_title">Основная память</string>
+
+    <string name="keys_order_title">Порядок кнопок тачскрина</string>
+
+    <string name="reboot_needed">Перезагрузите телефон для применения настроек.</string>
+
+    <string name="fail">Неизвестная ошибка.</string>
+    
+    <string name="fast_charge">Быстрая зарядка</string>
+
+    <string name="charge_level">Ток быстрой зарядки, мА</string>
+
+    <string name="logging_title">Журналы Android (logcat)</string>
+</resources>

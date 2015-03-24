@@ -1,0 +1,4 @@
+on init
+    write /sys/class/leds/lcd-backlight/brightness 75
+    write /sys/kernel/dyn_fsync/Dyn_fsync_active 0
+    write /sys/devices/f9927000.i2c/i2c-5/5-005d/wakeup_gesture 1

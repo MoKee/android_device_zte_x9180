@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">高級設置</string>
+
+    <string name="prox_cal">距離感應器校準</string>
+    <string name="prox_naked_cal">距離感應器無遮擋校準</string>
+    <string name="port_enabler">啟用診斷端口</string>
+
+    <string name="main_storage_title">主存儲</string>
+
+    <string name="keys_order_title">按鍵佈局順序</string>
+
+    <string name="root_not_granted">請在開發者選項中啟用root功能。</string>
+
+    <string name="reboot_needed">請重啟使設置生效。</string>
+
+    <string name="shell_fail">錯誤 - 無法開始shell腳本。</string>
+
+    <string name="fail">未知錯誤。</string>
+
+    <string name="kernel_unsupported">不受支持的內核。某些性能將被禁用。</string>
+</resources>
