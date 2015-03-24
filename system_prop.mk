@@ -13,11 +13,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.buffer.size.kb=64 \
+    audio.offload.buffer.size.kb=240 \
+    audio.offload.min.duration.secs=30 \
     audio.offload.gapless.enabled=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=false \
-    persist.audio.lowlatency.rec=false
+    av.offload.enable=false \
+    persist.audio.lowlatency.rec=false \
+    audio.offload.disable=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.use-awesome=false \
+    persist.sys.media.use-awesome=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true
