@@ -96,7 +96,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.umsdirtyratio=20 \
-    ro.telephony.default_network=5
+    ro.telephony.default_network=0,1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
