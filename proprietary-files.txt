@@ -65,6 +65,7 @@ vendor/lib/libvendorconn.so
 
 # GPS
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
+-priv-app/xtra_t_app/xtra_t_app.apk
 bin/loc_launcher
 bin/location-mq
 bin/lowi-server
