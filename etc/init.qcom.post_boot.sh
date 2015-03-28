@@ -524,7 +524,8 @@ esac
 # Post-setup services
 case "$target" in
     "msm8660" | "msm8960" | "msm8226" | "msm8610")
-        start mpdecision
+#        start mpdecision
+        echo 1 > /sys/module/intelli_plug/parameters/intelli_plug_active
     ;;
     "msm8974")
         start mpdecision
