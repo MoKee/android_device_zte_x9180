@@ -1076,7 +1076,7 @@ service poad /system/bin/poad
 on property:sys.perf.profile=0
 #    start mpdecision
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor smartmax
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ${persist.cpu.scaling_governor.powersave}
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
     write /sys/class/devfreq/qcom,cpubw.65/governor powersave
 
@@ -1084,7 +1084,7 @@ on property:sys.perf.profile=0
 on property:sys.perf.profile=1
 #    start mpdecision
     write /sys/module/intelli_plug/parameters/intelli_plug_active 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ${persist.cpu.scaling_governor.balanced}
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     write /sys/class/devfreq/qcom,cpubw.65/governor msm_cpufreq
 

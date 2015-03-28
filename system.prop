@@ -65,3 +65,6 @@ ro.min_freq_0=787200
 persist.sys.strictmode.disable=true
 
 persist.data.qmi.adb_logmask=0
+
+persist.cpu.scaling_governor.powersave=smartmax
+persist.cpu.scaling_governor.balanced=interactive
