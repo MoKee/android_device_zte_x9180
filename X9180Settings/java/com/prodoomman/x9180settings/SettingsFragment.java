@@ -271,7 +271,7 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 String line = br.readLine().trim();
 
                 if (line != null) {
-                    palm2sleep.setChecked("1".equals(line));
+                    palm2sleep.setChecked("0x01".equals(line));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
