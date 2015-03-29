@@ -36,7 +36,6 @@ persist.factory.receiver_volume=10
 persist.fuse_sdcard=false
 
 persist.radio.multisim.config=dsds
-persist.radio.rat_on=combine
 
 persist.sys.bluetooth.name=ZTE V5
 
