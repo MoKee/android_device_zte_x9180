@@ -67,5 +67,5 @@ persist.sys.strictmode.disable=true
 
 persist.data.qmi.adb_logmask=0
 
-persist.cpu.scaling_governor.powersave=smartmax
-persist.cpu.scaling_governor.balanced=interactive
+persist.cpu.gov.powersave=smartmax
+persist.cpu.gov.balanced=interactive
