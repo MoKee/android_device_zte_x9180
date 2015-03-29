@@ -160,8 +160,10 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
                 if (line != null) {
                     String[] levels = line.split(" ");
-                    charge_level.setEntries(levels);
-                    charge_level.setEntryValues(levels);
+                    cpugov_balanced.setEntries(levels);
+                    cpugov_balanced.setEntryValues(levels);
+                    cpugov_powersave.setEntries(levels);
+                    cpugov_powersave.setEntryValues(levels);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
