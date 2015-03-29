@@ -364,10 +364,6 @@ vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 vendor/lib/rfsa/adsp/libadsp_denoise_skel.so
 
-# Perf
-bin/mpdecision
-vendor/lib/libqc-opt.so
-
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
