@@ -21,12 +21,20 @@
             android:defaultValue="128"
             >
         </ListPreference>
-        <SwitchPreference
-            android:key="android_logging"
-            android:title="@string/logging_title"
-            android:defaultValue="false"
-            android:enabled="false"
-            />
+        <ListPreference
+            android:key="cpugov_balanced"
+            android:title="@string/cpugov_balanced"
+            android:entries="@array/cpugov_names"
+            android:entryValues="@array/cpugov_values"
+            >
+        </ListPreference>
+        <ListPreference
+            android:key="cpugov_powersave"
+            android:title="@string/cpugov_powersave"
+            android:entries="@array/cpugov_names"
+            android:entryValues="@array/cpugov_values"
+            >
+        </ListPreference>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/charger_category">

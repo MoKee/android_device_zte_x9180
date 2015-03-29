@@ -27,4 +27,7 @@
     <string name="zram_title">ZRam</string>
 
     <string name="logging_title">Android logging (logcat)</string>
+
+    <string name="cpugov_balanced">Cpu governor (balanced mode)</string>
+    <string name="cpugov_powersave">Cpu governor (powersave mode)</string>
 </resources>

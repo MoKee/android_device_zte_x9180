@@ -36,4 +36,8 @@
     <string-array translatable="false" name="chargelevel_values">
         <item>0</item>
     </string-array>
+    <string-array translatable="false" name="cpugov_names">
+    </string-array>
+    <string-array translatable="false" name="cpugov_values">
+    </string-array>
 </resources>

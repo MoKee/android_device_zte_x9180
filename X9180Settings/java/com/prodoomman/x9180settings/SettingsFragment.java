@@ -27,67 +27,39 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     final String PALM2SLEEP_FILE = "/sys/devices/f9927000.i2c/i2c-5/5-005d/palm2sleep";
     final String KEYS_ARRAY_FILE = "/sys/devices/f9927000.i2c/i2c-5/5-005d/touch_key_array";
 
-    final String ANDROID_LOGGING_FILE = "/sys/kernel/logger_mode";
+    final String CPU_GOVS_LIST = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
+    final String CPU_GOV_CURRENT = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
 
     ListPreference charge_level;
     SwitchPreference fast_charge;
     SwitchPreference palm2sleep;
     SwitchPreference android_logging;
 
-    class KeyOrderTask extends AsyncTask<String, Void, Integer> {
+    private class SysfsValue {
+        private String fileName;
+        private String value;
 
-        @Override
-        protected Integer doInBackground(String... params) {
-            try {
-                FileOutputStream fos = new FileOutputStream(KEYS_ARRAY_FILE);
-                String data = "0".equals(params[0])?"139 172 158\n":"158 172 139\n";
-                fos.write(data.getBytes(Charset.forName("UTF-8")));
-                fos.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return -1;
-            }
-            return 0;
+        private SysfsValue(String fileName, String value) {
+            this.fileName = fileName;
+            this.value = value;
         }
 
-        @Override
-        protected void onPostExecute(Integer result) {
-            if(0 != result) {
-                Toast.makeText(getActivity(), R.string.fail, Toast.LENGTH_SHORT).show();
-            }
+        public String getFileName() {
+            return fileName;
+        }
+
+        public String getValue() {
+            return value;
         }
     }
 
-    class Palm2sleepTask extends AsyncTask<String, Void, Integer> {
+    class SysfsWriteTask extends AsyncTask<SysfsValue, Void, Integer> {
 
         @Override
-        protected Integer doInBackground(String... params) {
+        protected Integer doInBackground(SysfsValue... params) {
             try {
-                FileOutputStream fos = new FileOutputStream(PALM2SLEEP_FILE);
-                fos.write(params[0].getBytes(Charset.forName("UTF-8")));
-                fos.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return -1;
-            }
-            return 0;
-        }
-
-        @Override
-        protected void onPostExecute(Integer result) {
-            if(0 != result) {
-                Toast.makeText(getActivity(), R.string.fail, Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    class AndroidLoggingTask extends AsyncTask<String, Void, Integer> {
-
-        @Override
-        protected Integer doInBackground(String... params) {
-            try {
-                FileOutputStream fos = new FileOutputStream(ANDROID_LOGGING_FILE);
-                fos.write(params[0].getBytes(Charset.forName("UTF-8")));
+                FileOutputStream fos = new FileOutputStream(params[0].getFileName());
+                fos.write(params[0].getValue().getBytes(Charset.forName("UTF-8")));
                 fos.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -160,14 +132,17 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         ListPreference zram_size = (ListPreference)findPreference("zram_size");
         zram_size.setOnPreferenceChangeListener(this);
 
+        ListPreference cpugov_balanced = (ListPreference)findPreference("cpugov_balanced");
+        cpugov_balanced.setOnPreferenceChangeListener(this);
+
+        ListPreference cpugov_powersave = (ListPreference)findPreference("cpugov_powersave");
+        cpugov_powersave.setOnPreferenceChangeListener(this);
+
         fast_charge = (SwitchPreference)findPreference("fast_charge");
         fast_charge.setOnPreferenceChangeListener(this);
 
         palm2sleep = (SwitchPreference)findPreference("palm2sleep");
         palm2sleep.setOnPreferenceChangeListener(this);
-
-        android_logging = (SwitchPreference)findPreference("android_logging");
-        android_logging.setOnPreferenceChangeListener(this);
 
         int planned_swap = SystemProperties.getInt("persist.storages.planned_swap", 0);
         int zram_planned_size = SystemProperties.getInt("persist.zram.planned_size", 128);
@@ -176,6 +151,31 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         charge_level = (ListPreference)findPreference("fast_charge_level");
         charge_level.setOnPreferenceChangeListener(this);
+
+        {   // read avaliable cpu governors
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(CPU_GOVS_LIST));
+                String line = br.readLine();
+
+                if (line != null) {
+                    String[] levels = line.split(" ");
+                    charge_level.setEntries(levels);
+                    charge_level.setEntryValues(levels);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null)
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+            cpugov_balanced.setValue(SystemProperties.get("persist.cpu.gov.balanced", "interactive"));
+            cpugov_powersave.setValue(SystemProperties.get("persist.cpu.gov.powersave", "smartmax"));
+        }
 
         {   // read avaliable fast charge levels
             BufferedReader br = null;
@@ -282,27 +282,6 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                     }
             }
         }
-
-        {
-            BufferedReader br = null;
-            try {
-                br = new BufferedReader(new FileReader(ANDROID_LOGGING_FILE));
-                String line = br.readLine().trim();
-
-                if (line != null) {
-                    android_logging.setChecked("1".equals(line));
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (br != null)
-                    try {
-                        br.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-            }
-        }
     }
 
     @Override
@@ -318,7 +297,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 Toast.makeText(getActivity(), R.string.reboot_needed, Toast.LENGTH_LONG).show();
                 break;
             case "keys_order":
-                new KeyOrderTask().execute((String)newValue);
+                new SysfsWriteTask().execute(new SysfsValue(KEYS_ARRAY_FILE,
+                        "0".equals((String)newValue)?"139 172 158\n":"158 172 139\n"));
                 break;
             case "fast_charge":
                 String fast_charge_level = charge_level.getValue();
@@ -329,10 +309,16 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 new FastChargeTask().execute(!fast_charge_value?null:(String)newValue);
                 break;
             case "palm2sleep":
-                new Palm2sleepTask().execute(((Boolean)newValue)?"1":"0");
+                new SysfsWriteTask().execute(new SysfsValue(PALM2SLEEP_FILE,
+                        ((Boolean)newValue)?"1":"0"));
                 break;
-            case "android_logging":
-                new AndroidLoggingTask().execute(((Boolean)newValue)?"1":"0");
+            case "cpugov_balanced":
+                SystemProperties.set("persist.cpu.gov.balanced", (String) newValue);
+                SystemProperties.set("sys.perf.profile", SystemProperties.get("sys.perf.profile"));
+                break;
+            case "cpugov_powersave":
+                SystemProperties.set("persist.cpu.gov.powersave", (String) newValue);
+                SystemProperties.set("sys.perf.profile", SystemProperties.get("sys.perf.profile"));
                 break;
             default:
                 break;
