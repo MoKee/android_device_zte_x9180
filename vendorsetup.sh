@@ -47,10 +47,4 @@ then
 else
     git am ../../../../device/ZTE/X9180/patches/media-disable-buffer-check.patch;
 fi
-if grep -q "# LOCAL_MODULE_TAGS := eng" dashplayer/Android.mk
-then
-    echo '[dashplayer] Media-caf dashplayer already patched';
-else
-    git am ../../../../device/ZTE/X9180/patches/media-enable-dashplayer.patch;
-fi
 croot
