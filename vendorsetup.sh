@@ -41,7 +41,7 @@ fi
 croot
 
 cd hardware/qcom/media-caf/msm8974
-if grep -q "QCOM_MEDIA_DISABLE_BUFFER_CHECK" mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
+if grep -q "QCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK" mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
 then
     echo '[buffer check] Media-caf mm-video-v4l2 already patched';
 else
