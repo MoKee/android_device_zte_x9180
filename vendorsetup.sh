@@ -39,3 +39,12 @@ else
     git am ../../../device/ZTE/X9180/patches/su-icon-settings.patch;
 fi
 croot
+
+cd hardware/qcom/media-caf/msm8974
+if grep -q "QCOM_MEDIA_DISABLE_BUFFER_CHECK" mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
+then
+    echo '[buffer check] Media-caf already patched';
+else
+    git am ../../../device/ZTE/X9180/patches/media-disable-buffer-check.patch;
+fi
+croot
