@@ -36,6 +36,6 @@ if grep -q "show_su_indicator" res/xml/status_bar_settings.xml
 then
     echo '[su icon] Settings already patched';
 else
-    git apply ../../device/ZTE/X9180/patches/su-icon-settings.patch;
+    git apply ../../../device/ZTE/X9180/patches/su-icon-settings.patch;
 fi
 croot
