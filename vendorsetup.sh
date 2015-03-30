@@ -43,8 +43,14 @@ croot
 cd hardware/qcom/media-caf/msm8974
 if grep -q "QCOM_MEDIA_DISABLE_BUFFER_CHECK" mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
 then
-    echo '[buffer check] Media-caf already patched';
+    echo '[buffer check] Media-caf mm-video-v4l2 already patched';
 else
     git am ../../../device/ZTE/X9180/patches/media-disable-buffer-check.patch;
+fi
+if grep -q "# LOCAL_MODULE_TAGS := eng" dashplayer/Android.mk
+then
+    echo '[dashplayer] Media-caf dashplayer already patched';
+else
+    git am ../../../device/ZTE/X9180/patches/media-enable-dashplayer.patch;
 fi
 croot
