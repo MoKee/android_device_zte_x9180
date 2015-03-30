@@ -35,6 +35,16 @@
             android:entryValues="@array/cpugov_values"
             >
         </ListPreference>
+        <SwitchPreference
+            android:key="cpu_boost_freq"
+            android:title="@string/cpu_boost"
+            android:defaultValue="true"
+            />
+        <SwitchPreference
+            android:key="cpu_boost_cores"
+            android:title="@string/intelliplug_boost"
+            android:defaultValue="true"
+            />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/charger_category">

@@ -28,7 +28,9 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     final String KEYS_ARRAY_FILE = "/sys/devices/f9927000.i2c/i2c-5/5-005d/touch_key_array";
 
     final String CPU_GOVS_LIST = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
-    final String CPU_GOV_CURRENT = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+
+    final String CPU_BOOST = "/sys/module/cpu_boost/parameters/cpu_boost";
+    final String INTELLIPLUG_BOOST = "/sys/module/intelli_plug/parameters/touch_boost_active";
 
     ListPreference charge_level;
     SwitchPreference fast_charge;
@@ -143,6 +145,12 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         palm2sleep = (SwitchPreference)findPreference("palm2sleep");
         palm2sleep.setOnPreferenceChangeListener(this);
+
+        SwitchPreference cpuboost = (SwitchPreference)findPreference("cpu_boost_freq");
+        cpuboost.setOnPreferenceChangeListener(this);
+
+        SwitchPreference intelliplug_boost = (SwitchPreference)findPreference("cpu_boost_cores");
+        intelliplug_boost.setOnPreferenceChangeListener(this);
 
         int planned_swap = SystemProperties.getInt("persist.storages.planned_swap", 0);
         int zram_planned_size = SystemProperties.getInt("persist.zram.planned_size", 128);
@@ -284,6 +292,48 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                     }
             }
         }
+
+        {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(CPU_BOOST));
+                String line = br.readLine().trim();
+
+                if (line != null) {
+                    cpuboost.setChecked("1".equals(line));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null)
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+        }
+
+        {
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(INTELLIPLUG_BOOST));
+                String line = br.readLine().trim();
+
+                if (line != null) {
+                    intelliplug_boost.setChecked("1".equals(line));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (br != null)
+                    try {
+                        br.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+        }
     }
 
     @Override
@@ -312,6 +362,14 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 break;
             case "palm2sleep":
                 new SysfsWriteTask().execute(new SysfsValue(PALM2SLEEP_FILE,
+                        ((Boolean)newValue)?"1":"0"));
+                break;
+            case "cpu_boost_freq":
+                new SysfsWriteTask().execute(new SysfsValue(CPU_BOOST,
+                        ((Boolean)newValue)?"1":"0"));
+                break;
+            case "cpu_boost_cores":
+                new SysfsWriteTask().execute(new SysfsValue(INTELLIPLUG_BOOST,
                         ((Boolean)newValue)?"1":"0"));
                 break;
             case "cpugov_balanced":

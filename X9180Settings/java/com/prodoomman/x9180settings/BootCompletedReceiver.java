@@ -15,6 +15,8 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     final String FAST_CHARGE_FILE = "/sys/kernel/fast_charge/force_fast_charge";
     final String CHARGE_LEVEL_FILE = "/sys/kernel/fast_charge/fast_charge_level";
     final String PALM2SLEEP_FILE = "/sys/devices/f9927000.i2c/i2c-5/5-005d/palm2sleep";
+    final String CPU_BOOST = "/sys/module/cpu_boost/parameters/cpu_boost";
+    final String INTELLIPLUG_BOOST = "/sys/module/intelli_plug/parameters/touch_boost_active";
 
     public BootCompletedReceiver() {
     }
@@ -61,6 +63,26 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             Log.d("X9180", "Trying to change palm2sleep value");
             FileOutputStream fos = new FileOutputStream(PALM2SLEEP_FILE);
             fos.write((palm2sleep?"1":"0").getBytes(Charset.forName("UTF-8")));
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        boolean cpu_boost_freq = prefs.getBoolean("cpu_boost_freq", true);
+        try {
+            Log.d("X9180", "Trying to change cpu_boost_freq value");
+            FileOutputStream fos = new FileOutputStream(CPU_BOOST);
+            fos.write((cpu_boost_freq?"1":"0").getBytes(Charset.forName("UTF-8")));
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        boolean cpu_boost_cores = prefs.getBoolean("cpu_boost_cores", true);
+        try {
+            Log.d("X9180", "Trying to change cpu_boost_cores value");
+            FileOutputStream fos = new FileOutputStream(INTELLIPLUG_BOOST);
+            fos.write((cpu_boost_cores?"1":"0").getBytes(Charset.forName("UTF-8")));
             fos.close();
         } catch (Exception e) {
             e.printStackTrace();

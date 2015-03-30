@@ -19,4 +19,4 @@ allow system_app fastcharge_sysfs:file rw_file_perms;
 
 # advanced settings
 allow system_app x9180_prop:property_service set;
-allow system_app logging_sysfs:file rw_file_perms;
+allow system_app boost_sysfs:file rw_file_perms;

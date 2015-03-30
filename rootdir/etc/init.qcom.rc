@@ -400,6 +400,9 @@ on boot
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0664 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
+    chown system system /sys/module/cpu_boost/parameters/cpu_boost
+    chown system system /sys/module/intelli_plug/parameters/touch_boost_active
+
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
     # the connection they belong to.
