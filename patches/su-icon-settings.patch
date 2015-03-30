@@ -1,0 +1,45 @@
+From 0a4f1e753c716f42e92c8fd8822bd469c6871232 Mon Sep 17 00:00:00 2001
+From: cristianomatos <cristianobmatos@gmail.com>
+Date: Mon, 5 Jan 2015 21:46:21 -0200
+Subject: [PATCH] Add the ability to hide superuser status bar icon [2/2]
+
+- Add a simple option to hide the su icon placed in status bar when a session is active
+
+Change-Id: I760807e209db46cce6f9efb3293e345e5b50b1aa
+---
+ res/values/cm_strings.xml       | 4 ++++
+ res/xml/status_bar_settings.xml | 6 ++++++
+ 2 files changed, 10 insertions(+)
+
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index f834b65..b2c1795 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -396,6 +396,10 @@
+     <string name="status_bar_am_pm_small">Small</string>
+     <string name="status_bar_am_pm_hidden">Hidden</string>
+ 
++    <!-- Superuser indicator on status bar -->
++    <string name="su_indicator">Superuser indicator</string>
++    <string name="su_indicator_summary">Show superuser indicator on status bar when a session is active</string>
++
+     <!-- Status bar - Battery -->
+     <string name="status_bar_battery_style_title">Battery status style</string>
+     <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
+diff --git a/res/xml/status_bar_settings.xml b/res/xml/status_bar_settings.xml
+index d497606..d6f9eb3 100644
+--- a/res/xml/status_bar_settings.xml
++++ b/res/xml/status_bar_settings.xml
+@@ -32,6 +32,12 @@
+         android:entries="@array/status_bar_am_pm_entries"
+         android:entryValues="@array/status_bar_am_pm_values" />
+ 
++    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
++        android:key="show_su_indicator"
++        android:title="@string/su_indicator"
++        android:summary="@string/su_indicator_summary"
++        android:defaultValue="true" />
++
+     <ListPreference
+         android:key="status_bar_battery_style"
+         android:title="@string/status_bar_battery_style_title"
