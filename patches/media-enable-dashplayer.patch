@@ -1,10 +1,12 @@
-commit 7c679e5e77994e4f4cac78019098446920f7116a
-Author: proDOOMman <prodoomman@gmail.com>
-Date:   Mon Mar 30 18:25:06 2015 +0300
+From 7c679e5e77994e4f4cac78019098446920f7116a Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Mon, 30 Mar 2015 18:25:06 +0300
+Subject: [PATCH 2/2] dashplayer: dont depend on eng builds
 
-    dashplayer: dont depend on eng builds
-    
-    Change-Id: Ic9c98eb5f2af3d2afc4d510fa5cbe82417067e56
+Change-Id: Ic9c98eb5f2af3d2afc4d510fa5cbe82417067e56
+---
+ dashplayer/Android.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/dashplayer/Android.mk b/dashplayer/Android.mk
 index b5588f6..fa96f38 100644
@@ -19,3 +21,6 @@ index b5588f6..fa96f38 100644
  
  ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
  ifndef TARGET_DISABLE_DASH
+-- 
+2.1.4
+
