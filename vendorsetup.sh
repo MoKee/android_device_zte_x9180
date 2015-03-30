@@ -20,14 +20,14 @@ if grep -q "ro.storage_list.override" services/core/java/com/android/server/Moun
 then
     echo '[storages] Frameworks/base already patched';
 else
-    git apply ../../device/ZTE/X9180/patches/frameworks-base-1.patch;
-    git apply ../../device/ZTE/X9180/patches/frameworks-base-2.patch;
+    git am ../../device/ZTE/X9180/patches/frameworks-base-1.patch;
+    git am ../../device/ZTE/X9180/patches/frameworks-base-2.patch;
 fi
 if grep -q "SHOW_SU_INDICATOR" core/java/android/provider/Settings.java
 then
     echo '[su icon] Frameworks/base already patched';
 else
-    git apply ../../device/ZTE/X9180/patches/su-icon-frameworks-base.patch;
+    git am ../../device/ZTE/X9180/patches/su-icon-frameworks-base.patch;
 fi
 croot
 
@@ -36,6 +36,6 @@ if grep -q "show_su_indicator" res/xml/status_bar_settings.xml
 then
     echo '[su icon] Settings already patched';
 else
-    git apply ../../../device/ZTE/X9180/patches/su-icon-settings.patch;
+    git am ../../../device/ZTE/X9180/patches/su-icon-settings.patch;
 fi
 croot
