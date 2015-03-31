@@ -3,8 +3,7 @@ Device configuration for the ZTE V5 RedBull (X9180)
 
 Local manifest for CM12:
 
-```
-#!xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="ssh://git@gitlab.com" name="gitlab" />
@@ -21,8 +20,7 @@ Local manifest for CM12:
 
 Local manifest for MoKee L:
 
-```
-#!xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="ssh://git@gitlab.com" name="gitlab" />
@@ -39,8 +37,7 @@ Local manifest for MoKee L:
 
 Local manifest for PAC ROM:
 
-```
-#!xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <remote fetch="ssh://git@gitlab.com" name="gitlab" />
@@ -57,7 +54,7 @@ Local manifest for PAC ROM:
 
 Make rule for PAC ROM (vendor/pac/products/pac_X9180.mk):
 
-```
+```sh
 # Check for target product
 ifeq (pac_X9180,$(TARGET_PRODUCT))
 
