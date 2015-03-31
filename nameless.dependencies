@@ -9,13 +9,13 @@
   },
   {
     "remote": "gitlab",
-    "repository": "proDOOMman/android_kernel_zte_x9180.git",
+    "repository": "X9180/android_kernel_zte_x9180.git",
     "target_path": "kernel/ZTE/X9180",
     "revision": "cm-12.0"
   },
   {
     "remote": "gitlab",
-    "repository": "proDOOMman/android_device_zte_x9180_proprietary.git",
+    "repository": "X9180/android_device_zte_x9180_proprietary.git",
     "target_path": "vendor/ZTE/X9180",
     "revision": "cm-12.0"
   }
