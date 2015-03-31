@@ -20,5 +20,13 @@
 
     <string name="charge_level">Ток быстрой зарядки, мА</string>
 
-    <string name="logging_title">Журналы Android (logcat)</string>
+    <string name="cpugov">Управление частотой процессора</string>
+    <string name="cpugov_balanced">Сбалансированный режим</string>
+    <string name="cpugov_powersave">Режим энергосбережения</string>
+
+    <string name="cpu_boost">Cpu frequency boost</string>
+    <string name="intelliplug_boost">Cpu cores boost</string>
+
+    <string name="cpu_boost_summary">Увеличение минимальной частоты процессора после нажатия на экран</string>
+    <string name="intelliplug_boost_summary">Активация дополнительных ядер процессора после нажатия на экран</string>
 </resources>

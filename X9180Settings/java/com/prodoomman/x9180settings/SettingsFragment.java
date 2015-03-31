@@ -35,7 +35,6 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
     ListPreference charge_level;
     SwitchPreference fast_charge;
     SwitchPreference palm2sleep;
-    SwitchPreference android_logging;
 
     private class SysfsValue {
         private String fileName;
