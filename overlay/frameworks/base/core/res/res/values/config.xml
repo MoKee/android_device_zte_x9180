@@ -337,9 +337,6 @@
          performance profiles  -->
     <string name="config_perf_profile_default_entry" translatable="false">1</string>
 
-   <!-- Whether cpu boost is enabled for horizontal scroll. -->
-   <bool name="config_enableCpuBoostForScroller">true</bool>
-
     <!-- The list absolute paths of jar/apk files containing the device specific handlers,
     delimited by File.pathSeparator, which defaults to ":" on Android -->
     <string name="config_deviceKeyHandlerLib" translatable="false">/system/framework/com.cyanogenmod.keyhandler.jar</string>
