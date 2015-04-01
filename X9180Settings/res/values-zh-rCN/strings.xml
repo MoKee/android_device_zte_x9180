@@ -9,13 +9,30 @@
 
     <string name="keys_order_title">按键布局顺序</string>
 
-    <string name="root_not_granted">请在开发者选项中启用root功能。</string>
-
     <string name="reboot_needed">请重启使设置生效。</string>
-
-    <string name="shell_fail">错误 - 无法开始shell脚本。</string>
 
     <string name="fail">未知错误。</string>
 
-    <string name="kernel_unsupported">不受支持的内核。某些性能将被禁用。</string>
+    <string name="fast_charge">启用快速充电</string>
+
+    <string name="charge_level">快速充电电流，mA</string>
+
+    <string name="palm2sleep_title">手掌覆盖屏幕进入休眠</string>
+
+    <string name="touchscreen_category">触屏</string>
+    <string name="charger_category">充电</string>
+    <string name="storages_category">存储</string>
+    <string name="tuning_category">调音</string>
+
+    <string name="zram_title">ZRam</string>
+
+    <string name="cpugov">Cpu 管理</string>
+    <string name="cpugov_balanced">平衡模式</string>
+    <string name="cpugov_powersave">节能模式</string>
+
+    <string name="cpu_boost">Cpu 频率提升</string>
+    <string name="intelliplug_boost">Cpu 内核提升</string>
+
+    <string name="cpu_boost_summary"></string>
+    <string name="intelliplug_boost_summary"></string>
 </resources>

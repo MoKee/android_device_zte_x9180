@@ -7,15 +7,32 @@
 
     <string name="main_storage_title">主存儲</string>
 
-    <string name="keys_order_title">按鍵佈局順序</string>
-
-    <string name="root_not_granted">請在開發者選項中啟用root功能。</string>
+    <string name="keys_order_title">按鍵布局順序</string>
 
     <string name="reboot_needed">請重啟使設置生效。</string>
 
-    <string name="shell_fail">錯誤 - 無法開始shell腳本。</string>
-
     <string name="fail">未知錯誤。</string>
 
-    <string name="kernel_unsupported">不受支持的內核。某些性能將被禁用。</string>
+    <string name="fast_charge">啟用快速充電</string>
+
+    <string name="charge_level">快速充電電流，mA</string>
+
+    <string name="palm2sleep_title">手掌覆蓋屏幕進入休眠</string>
+
+    <string name="touchscreen_category">觸屏</string>
+    <string name="charger_category">充電</string>
+    <string name="storages_category">存儲</string>
+    <string name="tuning_category">調音</string>
+
+    <string name="zram_title">ZRam</string>
+
+    <string name="cpugov">Cpu 管理</string>
+    <string name="cpugov_balanced">平衡模式</string>
+    <string name="cpugov_powersave">節能模式</string>
+
+    <string name="cpu_boost">Cpu 頻率提升</string>
+    <string name="intelliplug_boost">Cpu 內核提升</string>
+
+    <string name="cpu_boost_summary"></string>
+    <string name="intelliplug_boost_summary"></string>
 </resources>
