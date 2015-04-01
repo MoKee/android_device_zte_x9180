@@ -29,6 +29,12 @@ then
 else
     git am ../../device/ZTE/X9180/patches/su-icon-frameworks-base.patch;
 fi
+if grep -q "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
+then
+    echo '[statusbar powerkey] Frameworks/base already patched';
+else
+    git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base.patch;
+fi
 croot
 
 cd packages/apps/Settings
@@ -37,6 +43,12 @@ then
     echo '[su icon] Settings already patched';
 else
     git am ../../../device/ZTE/X9180/patches/su-icon-settings.patch;
+fi
+if grep -q "statusbar_powerkey v01" res/xml/status_bar_settings.xml
+then
+    echo '[statusbar powerkey] Settings already patched';
+else
+    git am ../../../device/ZTE/X9180/patches/statusbar-powerkey-settings.patch;
 fi
 croot
 

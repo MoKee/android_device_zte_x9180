@@ -1,0 +1,58 @@
+From 22f8871944f1d4c0a5ef629c85df10184719759c Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Wed, 1 Apr 2015 22:16:41 +0300
+Subject: [PATCH] Statusbar powerkey. Initial commit (packages/apps/Settings
+ patch)
+
+Change-Id: Id007f1579494fdb3c7dd2a3a5f0c913dcc0a7099
+---
+ res/values-ru/cm_strings.xml    | 3 +++
+ res/values/cm_strings.xml       | 3 +++
+ res/xml/status_bar_settings.xml | 7 +++++++
+ 3 files changed, 13 insertions(+)
+
+diff --git a/res/values-ru/cm_strings.xml b/res/values-ru/cm_strings.xml
+index bdf6581..9d545ad 100644
+--- a/res/values-ru/cm_strings.xml
++++ b/res/values-ru/cm_strings.xml
+@@ -812,4 +812,7 @@
+   <string name="battery_saver_threshold">Автом. энергосбережение</string>
+   <string name="battery_saver_summary">Снизить производительность и ограничить фоновую передачу данных</string>
+   <string name="battery_saver_summary_unavailable">Недоступно во время зарядки</string>
++
++  <string name="statusbar_powerkey_display">Виртуальная кнопка Power</string>
++  <string name="statusbar_powerkey_desc">Блокировать экран нажатием на правый угол строки состояния</string>
+ </resources>
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index 380ecda..f117771 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -1161,4 +1161,7 @@
+     <string name="battery_saver_threshold">Battery saver threshold</string>
+     <string name="battery_saver_summary">Reduce performance and limit background data</string>
+     <string name="battery_saver_summary_unavailable">Not available while charging</string>
++
++    <string name="statusbar_powerkey_display">Virtual Power key</string>
++    <string name="statusbar_powerkey_desc">Lock screen by tapping on the right corner of the statusbar</string>
+ </resources>
+diff --git a/res/xml/status_bar_settings.xml b/res/xml/status_bar_settings.xml
+index d1a136a..d1bc0a3 100644
+--- a/res/xml/status_bar_settings.xml
++++ b/res/xml/status_bar_settings.xml
+@@ -38,6 +38,13 @@
+         android:summary="@string/su_indicator_summary"
+         android:defaultValue="true" />
+ 
++    <!-- statusbar_powerkey v01 -->
++    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
++        android:key="statusbar_powerkey"
++        android:title="@string/statusbar_powerkey_display"
++        android:summary="@string/statusbar_powerkey_desc"
++        android:defaultValue="true" />
++
+     <ListPreference
+         android:key="status_bar_battery_style"
+         android:title="@string/status_bar_battery_style_title"
+-- 
+2.1.4
+
