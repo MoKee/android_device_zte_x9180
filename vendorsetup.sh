@@ -29,7 +29,7 @@ then
 else
     git am ../../device/ZTE/X9180/patches/su-icon-frameworks-base.patch;
 fi
-if grep -q "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
+if grep -qs "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
 then
     echo '[statusbar powerkey] Frameworks/base already patched';
 else
