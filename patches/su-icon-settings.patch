@@ -1,4 +1,4 @@
-From edae7314c32a9b986fd0ee2c5ef21a905def0cff Mon Sep 17 00:00:00 2001
+From 5cb2a05b633010137c10c8246142b4b9d60f24aa Mon Sep 17 00:00:00 2001
 From: cristianomatos <cristianobmatos@gmail.com>
 Date: Mon, 5 Jan 2015 21:46:21 -0200
 Subject: [PATCH] Add the ability to hide superuser status bar icon [2/2]
@@ -7,39 +7,9 @@ Subject: [PATCH] Add the ability to hide superuser status bar icon [2/2]
 
 Change-Id: I760807e209db46cce6f9efb3293e345e5b50b1aa
 ---
- res/values-ru/cm_strings.xml    | 2 ++
- res/values/cm_strings.xml       | 4 ++++
  res/xml/status_bar_settings.xml | 6 ++++++
- 3 files changed, 12 insertions(+)
+ 1 file changed, 6 insertions(+)
 
-diff --git a/res/values-ru/cm_strings.xml b/res/values-ru/cm_strings.xml
-index bdf6581..b751f37 100644
---- a/res/values-ru/cm_strings.xml
-+++ b/res/values-ru/cm_strings.xml
-@@ -288,6 +288,8 @@
-   <string name="status_bar_am_pm_normal">Обычный</string>
-   <string name="status_bar_am_pm_small">Маленький</string>
-   <string name="status_bar_am_pm_hidden">Не показывать индикатор</string>
-+  <string name="su_indicator">Индикатор суперпользователя</string>
-+  <string name="su_indicator_summary">Показывать индикатор суперпользователя (#) в строке состояние, когда он используется</string>
-   <string name="status_bar_battery_style_title">Индикатор батареи</string>
-   <string name="status_bar_battery_style_icon_portrait">Вертикальный значок</string>
-   <string name="status_bar_battery_style_icon_landscape">Горизонтальный значок</string>
-diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index d4345bf..380ecda 100644
---- a/res/values/cm_strings.xml
-+++ b/res/values/cm_strings.xml
-@@ -402,6 +402,10 @@
-     <string name="status_bar_am_pm_small">Small</string>
-     <string name="status_bar_am_pm_hidden">Hidden</string>
- 
-+    <!-- Superuser indicator on status bar -->
-+    <string name="su_indicator">Superuser indicator</string>
-+    <string name="su_indicator_summary">Show superuser indicator on status bar when a session is active</string>
-+
-     <!-- Status bar - Battery -->
-     <string name="status_bar_battery_style_title">Battery status style</string>
-     <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
 diff --git a/res/xml/status_bar_settings.xml b/res/xml/status_bar_settings.xml
 index 1671690..d1a136a 100644
 --- a/res/xml/status_bar_settings.xml

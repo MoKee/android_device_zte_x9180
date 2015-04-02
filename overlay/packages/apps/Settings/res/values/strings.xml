@@ -15,4 +15,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="device_settings">Additional settings</string>
+  <string name="statusbar_powerkey_display">Virtual Power key</string>
+  <string name="statusbar_powerkey_desc">Lock screen by tapping on the right corner of the statusbar</string>
+  <string name="su_indicator">Superuser indicator</string>
+  <string name="su_indicator_summary">Show superuser indicator on status bar when a session is active</string>
 </resources>
