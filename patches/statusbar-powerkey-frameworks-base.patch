@@ -142,7 +142,7 @@ index 0000000..1128f70
 +
 +    private void updateSettings() {
 +        boolean z = true;
-+        if (System.getInt(this.mContext.getContentResolver(), "statusbar_powerkey", 1) != 1) {
++        if (System.getInt(this.mContext.getContentResolver(), "statusbar_powerkey", 0) != 1) {
 +            z = false;
 +        }
 +        this.mPowerW = z;

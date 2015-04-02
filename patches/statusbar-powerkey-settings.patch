@@ -48,7 +48,7 @@ index d1a136a..d1bc0a3 100644
 +        android:key="statusbar_powerkey"
 +        android:title="@string/statusbar_powerkey_display"
 +        android:summary="@string/statusbar_powerkey_desc"
-+        android:defaultValue="true" />
++        android:defaultValue="false" />
 +
      <ListPreference
          android:key="status_bar_battery_style"
