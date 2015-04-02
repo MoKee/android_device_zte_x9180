@@ -35,6 +35,12 @@ then
 else
     git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base.patch;
 fi
+if grep -q "signal icons changed" packages/SystemUI/src/com/android/systemui/statusbar/policy/TelephonyIcons.java
+then
+    echo '[signal icons] Frameworks/base already patched';
+else
+    git am ../../device/ZTE/X9180/patches/signal-without-exclamation-mark.patch;
+fi
 croot
 
 cd packages/apps/Settings
