@@ -17,6 +17,6 @@
   <string name="device_settings">Ustawienia dodatkowe</string>
   <string name="statusbar_powerkey_display">Wirtualny przycisk Power</string>
   <string name="statusbar_powerkey_desc">Zablokuj ekran poprzez stuknięcie w prawy górny róg paska stanu</string>
-  <string name="su_indicator">Wskaźnik superuser'a</string>
-  <string name="su_indicator_summary">Pokaż wskaźnik superuser'a na pasku stanu, gdy sesja jest aktywna</string>
+  <string name="su_indicator">Wskaźnik superuser\'a</string>
+  <string name="su_indicator_summary">Pokaż wskaźnik superuser\'a na pasku stanu, gdy sesja jest aktywna</string>
 </resources>
