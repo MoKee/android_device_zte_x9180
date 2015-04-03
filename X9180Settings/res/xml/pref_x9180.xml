@@ -27,6 +27,7 @@
             android:summary="@string/cpugov_balanced"
             android:entries="@array/cpugov_names"
             android:entryValues="@array/cpugov_values"
+            android:dialogTitle="@string/cpugov_balanced"
             >
         </ListPreference>
         <ListPreference
@@ -35,6 +36,7 @@
             android:summary="@string/cpugov_powersave"
             android:entries="@array/cpugov_names"
             android:entryValues="@array/cpugov_values"
+            android:dialogTitle="@string/cpugov_powersave"
             >
         </ListPreference>
         <SwitchPreference
