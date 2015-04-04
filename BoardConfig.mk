@@ -34,8 +34,6 @@ MALLOC_IMPL := dlmalloc
 #Disable memcpy_base.S optimization
 TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
 
-BOARD_USES_LEGACY_MMAP := true
-
 # QCRIL
 TARGET_RIL_VARIANT := caf
 SIM_COUNT := 2
