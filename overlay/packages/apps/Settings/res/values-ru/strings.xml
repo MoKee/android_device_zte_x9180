@@ -22,4 +22,6 @@
   <string name="statusbar_powerkey_desc">Блокировать экран нажатием на правый угол строки состояния</string>
   <string name="su_indicator">Индикатор суперпользователя</string>
   <string name="su_indicator_summary">Показывать индикатор суперпользователя (#) в строке состояния, когда он используется</string>
+  <string name="statusbar_powerkey_display">Индикаторы подключения к интернет</string>
+  <string name="statusbar_powerkey_desc">Показывать восклицательные знаки рядом с индикаторами сигнала, когда отсутствует подключение к интернет</string>
 </resources>

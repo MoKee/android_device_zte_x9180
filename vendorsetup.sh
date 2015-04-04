@@ -35,11 +35,11 @@ then
 else
     git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base.patch;
 fi
-if grep -q "signal icons changed" packages/SystemUI/src/com/android/systemui/statusbar/policy/TelephonyIcons.java
+if grep -q "mShowExclamationMarks" packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
 then
     echo '[signal icons] Frameworks/base already patched';
 else
-    git am ../../device/ZTE/X9180/patches/signal-without-exclamation-mark.patch;
+    git am ../../device/ZTE/X9180/patches/signal-without-exclamation-mark-frameworks-base.patch;
 fi
 croot
 
@@ -55,6 +55,12 @@ then
     echo '[statusbar powerkey] Settings already patched';
 else
     git am ../../../device/ZTE/X9180/patches/statusbar-powerkey-settings.patch;
+fi
+if grep -q "exclamation marks v01" res/xml/status_bar_settings.xml
+then
+    echo '[signal icons] Settings already patched';
+else 
+    git am ../../../device/ZTE/X9180/patches/signal-without-exclamation-mark-settings.patch;
 fi
 croot
 
