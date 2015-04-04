@@ -1,4 +1,4 @@
-From d98f295c2729a017afafaf81826dafe1331f0947 Mon Sep 17 00:00:00 2001
+From 21264e7548449f7ce68cf08370968451a09c4ec4 Mon Sep 17 00:00:00 2001
 From: proDOOMman <prodoomman@gmail.com>
 Date: Sat, 4 Apr 2015 18:46:41 +0300
 Subject: [PATCH] Add the ability to hide exclamation marks from signal
@@ -10,10 +10,10 @@ Change-Id: Ia0e0fd4fe6c279243e49e4d300a6703f9c8f8ac5
  1 file changed, 20 insertions(+), 4 deletions(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
-index 7ecba4e..3fc5c6d 100644
+index 3a7a39e..416ed4c 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
-@@ -64,6 +64,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -74,6 +74,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
      private int mUserId;
      private SettingsObserver mSettingsObserver;
  
@@ -22,16 +22,16 @@ index 7ecba4e..3fc5c6d 100644
      // telephony
      boolean[] mMSimDataConnected;
      IccCardConstants.State[] mMSimState;
-@@ -755,7 +757,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -775,7 +777,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
                  }
  
                  mMSimPhoneSignalIconId[phoneId] =
 -                        TelephonyIcons.getSignalStrengthIcon(phoneId, mInetCondition,
 +                        TelephonyIcons.getSignalStrengthIcon(phoneId, mShowExclamationMarks?mInetCondition:1,
-                                 iconLevel, isRoaming(phoneId));
+                         iconLevel, isRoaming(phoneId));
  
                  mMSimContentDescriptionPhoneSignal[phoneId] =
-@@ -765,7 +767,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -785,7 +787,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
  
                  if (phoneId == dataSub) {
                      mQSPhoneSignalIconId = TelephonyIcons
@@ -40,7 +40,7 @@ index 7ecba4e..3fc5c6d 100644
                  }
  
                  if (DEBUG) {
-@@ -798,7 +800,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -818,7 +820,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
              if (mIsWimaxEnabled && mWimaxConnected) {
                  // wimax is a special 4g network not handled by telephony
                  mMSimDataTypeIconId[phoneId] = R.drawable.stat_sys_data_fully_connected_4g;
@@ -49,16 +49,16 @@ index 7ecba4e..3fc5c6d 100644
                  mMSimContentDescriptionDataType[phoneId] = mContext.getString(
                          R.string.accessibility_data_connection_4g);
              } else {
-@@ -837,7 +839,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -857,7 +859,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
          }
  
          if (setQSDataTypeIcon && phoneId == dataSub) {
 -            mQSDataTypeIconId = TelephonyIcons.QS_DATA_R[mInetCondition];
 +            mQSDataTypeIconId = TelephonyIcons.QS_DATA_R[mShowExclamationMarks?mInetCondition:1];
-         }
+          }
      }
  
-@@ -1534,6 +1536,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -1533,6 +1535,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
          private boolean mRegistered;
          private final Uri EMPTY_ICONS_URI = Settings.System.getUriFor(
                  Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
@@ -67,7 +67,7 @@ index 7ecba4e..3fc5c6d 100644
  
          public SettingsObserver(Handler handler) {
              super(handler);
-@@ -1545,11 +1549,17 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -1544,11 +1548,17 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
                      Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS, 1, mUserId) != 0;
          }
  
@@ -85,7 +85,7 @@ index 7ecba4e..3fc5c6d 100644
              updateSettings();
          }
  
-@@ -1557,6 +1567,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -1556,6 +1566,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
          public void onChange(boolean selfChange, Uri uri) {
              if (EMPTY_ICONS_URI.equals(uri)) {
                  updateSettings();
@@ -94,7 +94,7 @@ index 7ecba4e..3fc5c6d 100644
              }
          }
  
-@@ -1565,6 +1577,10 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+@@ -1564,6 +1576,10 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
              for (MSimSignalCluster cluster : mSimSignalClusters) {
                  cluster.setShowEmptySimSlots(showEmptySlots);
              }
