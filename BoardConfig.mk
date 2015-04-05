@@ -18,7 +18,7 @@
 LOCAL_PATH := device/ZTE/X9180
 
 ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
+  ifneq (,$(filter $(TARGET_BUILD_VARIANT),user userdebug))
     ifeq ($(WITH_DEXPREOPT),)
       WITH_DEXPREOPT := true
     endif
