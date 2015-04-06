@@ -207,8 +207,8 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
     }
 
     if(needsVideoFix) {
-        if(videoMode) {
-            if(camera_preview_enabled(device)) {
+        if(camera_preview_enabled(device)) {
+            if(videoMode) {
                 ALOGV("%s: trying to fix video recording...", __FUNCTION__);
                 params.set(android::CameraParameters::KEY_RECORDING_HINT, "false");
 
@@ -222,9 +222,9 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
                 params.set(android::CameraParameters::KEY_RECORDING_HINT, "true");
 
                 needsVideoFix = false;
+            } else {
+                needsVideoFix = false;
             }
-        } else {
-            needsVideoFix = false;
         }
     }
 
