@@ -47,6 +47,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
 	hw_device_t **device);
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
+static int camera_preview_enabled(struct camera_device *device);
 
 static struct hw_module_methods_t camera_module_methods = {
     .open = camera_device_open
@@ -88,8 +89,7 @@ typedef struct wrapper_camera_device {
 
 #define CAMERA_ID(device) (((wrapper_camera_device_t *)(device))->id)
 
-static char buffer[11];
-static bool is_decrypted = false;
+static bool needsVideoFix = true;
 
 static int check_vendor_module()
 {
@@ -168,7 +168,7 @@ static char *camera_fixup_getparams(int id, const char *settings)
     return ret;
 }
 
-static char *camera_fixup_setparams(int id, const char *settings)
+static char *camera_fixup_setparams(int id, const char *settings, struct camera_device *device)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -184,11 +184,37 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.dump();
 #endif
 
+    if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
+        videoMode = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
+    }
+
 /*
     if(!videoMode && id==1) {
 	params.set("snapshot-picture-flip", "flip-v");
     }
 */
+
+    if(needsVideoFix) {
+        if(videoMode) {
+            if(camera_preview_enabled(device)) {
+                ALOGV("%s: trying to fix video recording...", __FUNCTION__);
+                params.set(android::CameraParameters::KEY_RECORDING_HINT, "false");
+
+                android::String8 strParams = params.flatten();
+                if (fixed_set_params[id])
+                    free(fixed_set_params[id]);
+                fixed_set_params[id] = strdup(strParams.string());
+                char *ret = fixed_set_params[id];
+                VENDOR_CALL(device, set_parameters, fixed_set_params[id]);
+
+                params.set(android::CameraParameters::KEY_RECORDING_HINT, "true");
+
+                needsVideoFix = false;
+            }
+        } else {
+            needsVideoFix = false;
+        }
+    }
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -418,7 +444,7 @@ static int camera_set_parameters(struct camera_device *device,
 	return -EINVAL;
 
     char *tmp = NULL;
-    tmp = camera_fixup_setparams(CAMERA_ID(device), params);
+    tmp = camera_fixup_setparams(CAMERA_ID(device), params, device);
 
     int ret = VENDOR_CALL(device, set_parameters, tmp);
     return ret;
@@ -591,6 +617,8 @@ static int camera_device_open(const hw_module_t *module, const char *name,
 	}
 
 	memset(camera_ops, 0, sizeof(*camera_ops));
+
+	needsVideoFix = true;
 
 	camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
 	camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
