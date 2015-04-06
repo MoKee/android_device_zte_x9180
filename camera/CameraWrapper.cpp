@@ -194,6 +194,18 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
     }
 */
 
+    if(videoMode) {
+        if(!params.get(android::CameraParameters::KEY_FOCUS_MODE) ||
+          !strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "continuous-picture")) {
+            params.set(android::CameraParameters::KEY_FOCUS_MODE, "continuous-video");
+          }
+    } else {
+        if(!params.get(android::CameraParameters::KEY_FOCUS_MODE) ||
+          !strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "continuous-video")) {
+            params.set(android::CameraParameters::KEY_FOCUS_MODE, "continuous-picture");
+        }
+    }
+
     if(needsVideoFix) {
         if(videoMode) {
             if(camera_preview_enabled(device)) {
