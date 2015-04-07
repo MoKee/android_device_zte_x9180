@@ -18,10 +18,8 @@
 LOCAL_PATH := device/ZTE/X9180
 
 ifeq ($(HOST_OS),linux)
-  ifneq (,$(filter $(TARGET_BUILD_VARIANT),user userdebug))
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
   endif
 endif
 WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
