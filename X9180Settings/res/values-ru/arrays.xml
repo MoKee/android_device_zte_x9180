@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="keys_order_names">
+        <item>Меню - Домой - Назад</item>
+        <item>Назад - Домой - Меню</item>
+    </string-array>
     <string-array name="main_storage_names">
         <item>Внутренняя память</item>
         <item>SD карта</item>
