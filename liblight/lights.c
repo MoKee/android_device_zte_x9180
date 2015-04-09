@@ -215,7 +215,7 @@ set_light_backlight(struct light_device_t* dev,
     int brightness = rgb_to_brightness(state);
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
-    ALOGD("[LIGHTS.MSM8226] lcd brightness=%d\n", brightness);
+    ALOGV("[LIGHTS.MSM8226] lcd brightness=%d\n", brightness);
 
     char property[PROPERTY_VALUE_MAX];
     if(property_get(SRE_PROPERTY, property, 0) > 0) {
@@ -258,10 +258,10 @@ set_breath_light_locked(int event_source,
 	active_states &= ~event_source;
 	if(active_states == 0) {
 //	    if(event_source == BREATH_SOURCE_BUTTONS && last_state == BREATH_SOURCE_BUTTONS) {
-//		ALOGD("[LIGHTS.MSM8226] disabling buttons backlight\n");
+//		ALOGV("[LIGHTS.MSM8226] disabling buttons backlight\n");
 //		write_int(BREATH_LED_LUT_FLAGS, (int)PM_PWM_LUT_NO_TABLE); // smoothly turn led off
 //	    } else {
-		ALOGD("[LIGHTS.MSM8226] disabling blinking\n");
+		ALOGV("[LIGHTS.MSM8226] disabling blinking\n");
 		write_int(BREATH_LED_BLINK, 0); // just turn led off
 //	    }
 	    last_state = BREATH_SOURCE_NONE;
@@ -349,7 +349,7 @@ set_breath_light_locked(int event_source,
       return 0;
     }
 
-    ALOGD("[LIGHTS.MSM8226] writing values: pause_lo=%d, pause_hi=%d, lut_flags=%d\n", offMS, onMS, lut_flags);
+    ALOGV("[LIGHTS.MSM8226] writing values: pause_lo=%d, pause_hi=%d, lut_flags=%d\n", offMS, onMS, lut_flags);
     write_int(BREATH_LED_BLINK, 0);
     write_str(BREATH_LED_DUTY_PCTS, light_template);
     write_int(BREATH_LED_RAMP_STEP_MS, (int)20);
