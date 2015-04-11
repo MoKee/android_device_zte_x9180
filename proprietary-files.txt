@@ -93,6 +93,7 @@ vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/libulp2.so
 vendor/lib/hw/flp.default.so
+vendor/lib/hw/activity_recognition.msm8226.so
 
 # Time services
 bin/time_daemon
