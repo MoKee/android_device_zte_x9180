@@ -21,10 +21,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.disable=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.use-awesome=false \
-    persist.sys.media.use-awesome=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
     mm.enable.smoothstreaming=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
