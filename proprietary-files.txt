@@ -431,11 +431,3 @@ vendor/lib/liblistensoundmodel.so
 
 # ZTE additional settings
 -app/Additional/Additional.apk
-
-# Widevine drm libs
-vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/libdrmdecrypt.so
-vendor/lib/libdrmwvmplugin.so
-vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
-vendor/lib/mediadrm/libwvdrmengine.so
