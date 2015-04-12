@@ -13,7 +13,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.buffer.size.kb=240 \
+    audio.offload.buffer.size.kb=32 \
     audio.offload.min.duration.secs=30 \
     audio.offload.gapless.enabled=true \
     av.offload.enable=false \
