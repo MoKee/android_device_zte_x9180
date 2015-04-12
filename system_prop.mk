@@ -90,7 +90,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.locale.region=RU
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.umsdirtyratio=20 \
     ro.telephony.default_network=0,1
 
 PRODUCT_PROPERTY_OVERRIDES += \
