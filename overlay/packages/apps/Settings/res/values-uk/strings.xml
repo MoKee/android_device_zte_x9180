@@ -14,5 +14,11 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="device_settings">Додатково</string>
+    <string name="device_settings">Додаткові налаштування</string>
+    <string name="statusbar_powerkey_display">Віртуальна клавіша Power</string>
+    <string name="statusbar_powerkey_desc">Блокувати екран натисканням на правий верхній край екрану</string>
+    <string name="su_indicator">Індикатор суперкористувача</string>
+    <string name="su_indicator_summary">Показувати ындикатор суперкористувача(#) в рядку стану, коли він використовується</string>
+    <string name="statusbar_exclamation_marks_display">Індикатор підключення до мережі Інтернет</string>
+    <string name="statusbar_exclamation_marks_desc">Показувати знаки оклику поруч з індикаторами сигналу, коли відсутній доступ до мережі Інтернет</string>
 </resources>

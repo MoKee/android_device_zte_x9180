@@ -13,7 +13,7 @@
         <item>128 Mb</item>
         <item>256 Mb</item>
         <item>512 Mb</item>
-        <item>Off</item>
+        <item>關閉</item>
     </string-array>
     <string-array name="chargelevel_names">
         <item>自動</item>

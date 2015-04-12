@@ -15,4 +15,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="device_settings">高级设置</string>
+    <string name="statusbar_powerkey_display">虚拟电源键</string>
+    <string name="statusbar_powerkey_desc">点击状态栏的右边角关屏</string>
+    <string name="su_indicator">Root权限提示符</string>
+    <string name="su_indicator_summary">当有应用调用Root权限时，在状态栏显示#号</string>
+    <string name="statusbar_exclamation_marks_display">网络连接提示</string>
+    <string name="statusbar_exclamation_marks_desc">当网络连接不畅时，在信号旁提示感叹号。</string>
 </resources>

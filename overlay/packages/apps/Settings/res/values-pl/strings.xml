@@ -19,4 +19,6 @@
     <string name="statusbar_powerkey_desc">Zablokuj ekran poprzez stuknięcie w prawy górny róg paska stanu</string>
     <string name="su_indicator">Wskaźnik superuser\'a</string>
     <string name="su_indicator_summary">Pokaż wskaźnik superuser\'a na pasku stanu, gdy sesja jest aktywna</string>
+    <string name="statusbar_exclamation_marks_display">Wskaźnik połączenia danych</string>
+    <string name="statusbar_exclamation_marks_desc">Pokaż wykrzykników w pobliżu ikony siły sygnału, gdy połączenie danych nie jest dostępna</string>
 </resources>

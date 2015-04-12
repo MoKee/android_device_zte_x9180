@@ -14,8 +14,8 @@
     <string name="touchscreen_category">触屏</string>
     <string name="charger_category">充电</string>
     <string name="storages_category">存储</string>
-    <string name="tuning_category">调音</string>
-    <string name="zram_title">ZRam</string>
+    <string name="tuning_category">调节</string>
+    <string name="zram_title">ZRam 设置</string>
     <string name="cpugov">Cpu 管理</string>
     <string name="cpugov_balanced">平衡模式</string>
     <string name="cpugov_powersave">节能模式</string>
