@@ -17,14 +17,6 @@
 
 LOCAL_PATH := device/ZTE/X9180
 
-ifeq ($(HOST_OS),linux)
-  ifeq ($(WITH_DEXPREOPT),)
-    WITH_DEXPREOPT := true
-    WITH_DEXPREOPT_BOOT_IMG_ONLY := false
-  endif
-endif
-WITH_DEXPREOPT_BOOT_IMG_ONLY ?= true
-
 PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl , $(PRODUCT_COPY_FILES))
 
 #Use dlmalloc instead of jemalloc for mallocs
