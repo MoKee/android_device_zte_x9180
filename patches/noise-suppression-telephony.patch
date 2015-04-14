@@ -1,0 +1,131 @@
+From 7fe6331f90aac647fdd3a080cb626804d2032492 Mon Sep 17 00:00:00 2001
+From: codeworkx <daniel.hillenbrand@codeworkx.de>
+Date: Thu, 5 Jul 2012 17:38:17 +0200
+Subject: [PATCH] Telephony: implement noise suppression for phone calls (2/3)
+
+Forward port from cm-10.2
+
+Change-Id: Ie72449f952f99b410fbb5bc4a8e6cbc833e6176f
+
+Conflicts:
+	res/values/cm_strings.xml
+	src/com/android/phone/CallFeaturesSetting.java
+	src/com/android/phone/CallNotifier.java
+
+Conflicts:
+	res/values/cm_strings.xml
+	src/com/android/phone/CallFeaturesSetting.java
+---
+ res/values/config.xml                          |  3 +++
+ res/xml/call_feature_setting.xml               |  6 ++++++
+ res/xml/call_feature_setting_msim.xml          |  7 +++++++
+ src/com/android/phone/CallFeaturesSetting.java | 18 ++++++++++++++++++
+ 4 files changed, 34 insertions(+)
+
+diff --git a/res/values/config.xml b/res/values/config.xml
+index 7d9c5cc..0f96ffa 100755
+--- a/res/values/config.xml
++++ b/res/values/config.xml
+@@ -91,6 +91,9 @@
+     <!-- Determines if device implements a noise suppression device for in call audio-->
+     <bool name="has_in_call_noise_suppression">false</bool>
+ 
++    <!-- Audio parameter for setting noise suppression-->
++    <string name="in_call_noise_suppression_audioparameter">noise_suppression=on=off</string>
++
+     <!-- Determines if the current device should allow emergency numbers
+          to be logged in the Call Log.
+          (Some carriers require that emergency calls *not* be logged,
+diff --git a/res/xml/call_feature_setting.xml b/res/xml/call_feature_setting.xml
+index b17596b..5e66e53 100644
+--- a/res/xml/call_feature_setting.xml
++++ b/res/xml/call_feature_setting.xml
+@@ -129,6 +129,12 @@
+         android:entries="@array/dtmf_tone_entries"
+         android:entryValues="@array/dtmf_tone_values"/>
+ 
++    <SwitchPreference
++        android:key="button_noise_suppression_key"
++        android:title="@string/noise_suppression_title"
++        android:summary="@string/noise_suppression_summary"
++        android:defaultValue="1"/>
++
+     <PreferenceScreen
+         android:key="button_gsm_more_expand_key"
+         android:title="@string/labelGSMMore"
+diff --git a/res/xml/call_feature_setting_msim.xml b/res/xml/call_feature_setting_msim.xml
+index 22b5b72..0d7b3e7 100644
+--- a/res/xml/call_feature_setting_msim.xml
++++ b/res/xml/call_feature_setting_msim.xml
+@@ -71,4 +71,11 @@
+         android:summary="@string/dtmf_tones_summary"
+         android:entries="@array/dtmf_tone_entries"
+         android:entryValues="@array/dtmf_tone_values"/>
++    
++    <SwitchPreference
++        android:key="button_noise_suppression_key"
++        android:title="@string/noise_suppression_title"
++        android:summary="@string/noise_suppression_summary"
++        android:defaultValue="1"/>
++
+ </PreferenceScreen>
+diff --git a/src/com/android/phone/CallFeaturesSetting.java b/src/com/android/phone/CallFeaturesSetting.java
+index cbbfac9..787bf3f 100644
+--- a/src/com/android/phone/CallFeaturesSetting.java
++++ b/src/com/android/phone/CallFeaturesSetting.java
+@@ -183,6 +183,7 @@ public class CallFeaturesSetting extends PreferenceActivity
+     private static final String BUTTON_RETRY_KEY       = "button_auto_retry_key";
+     private static final String BUTTON_TTY_KEY         = "button_tty_mode_key";
+     private static final String BUTTON_HAC_KEY         = "button_hac_key";
++    private static final String BUTTON_NOISE_SUPPRESSION_KEY = "button_noise_suppression_key";
+     private static final String BUTTON_IPPREFIX_KEY = "button_ipprefix_key";
+     private static final String BUTTON_VIDEO_CALL_FB_KEY = "videocall_setting_fb_key";
+     private static final String BUTTON_VIDEO_CALL_FW_KEY = "videocall_setting_fw_key";
+@@ -276,6 +277,7 @@ public class CallFeaturesSetting extends PreferenceActivity
+     private SwitchPreference mButtonHAC;
+     private ListPreference mButtonDTMF;
+     private ListPreference mButtonTTY;
++    private SwitchPreference mButtonNoiseSuppression;
+     private Preference mPhoneAccountSettingsPreference;
+     private SwitchPreference mMwiNotification;
+     private ListPreference mVoicemailProviders;
+@@ -507,6 +509,12 @@ public class CallFeaturesSetting extends PreferenceActivity
+                 showDialogIfForeground(TTY_SET_RESPONSE_ERROR);
+             }
+             return true;
++        } else if (preference == mButtonNoiseSuppression) {
++            int nsp = mButtonNoiseSuppression.isChecked() ? 1 : 0;
++            // Update Noise suppression value in Settings database
++            Settings.System.putInt(mPhone.getContext().getContentResolver(),
++                    Settings.System.NOISE_SUPPRESSION, nsp);
++            return true;
+         } else if (preference == mButtonAutoRetry) {
+             android.provider.Settings.Global.putInt(mPhone.getContext().getContentResolver(),
+                     android.provider.Settings.Global.CALL_AUTO_RETRY,
+@@ -1700,6 +1708,7 @@ public class CallFeaturesSetting extends PreferenceActivity
+         mButtonAutoRetry = (SwitchPreference) findPreference(BUTTON_RETRY_KEY);
+         mButtonHAC = (SwitchPreference) findPreference(BUTTON_HAC_KEY);
+         mButtonTTY = (ListPreference) findPreference(BUTTON_TTY_KEY);
++        mButtonNoiseSuppression = (SwitchPreference) findPreference(BUTTON_NOISE_SUPPRESSION_KEY);
+         mVoicemailProviders = (ListPreference) findPreference(BUTTON_VOICEMAIL_PROVIDER_KEY);
+         mIPPrefixPreference = (PreferenceScreen) findPreference(BUTTON_IPPREFIX_KEY);
+ 
+@@ -1766,6 +1775,15 @@ public class CallFeaturesSetting extends PreferenceActivity
+             }
+         }
+ 
++        if (mButtonNoiseSuppression != null) {
++            if (getResources().getBoolean(R.bool.has_in_call_noise_suppression)) {
++                mButtonNoiseSuppression.setOnPreferenceChangeListener(this);
++            } else {
++                prefSet.removePreference(mButtonNoiseSuppression);
++                mButtonNoiseSuppression = null;
++            }
++        }
++
+         boolean isWorldPhone = getResources().getBoolean(R.bool.world_phone);
+         if (!isWorldPhone && mPhone.getPhoneType() != PhoneConstants.PHONE_TYPE_GSM) {
+             Preference inCallEvents = prefSet.findPreference(BUTTON_INCALL_EVENTS_KEY);
+-- 
+2.1.4
+
