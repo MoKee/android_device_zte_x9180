@@ -9,6 +9,7 @@ tunnel.audio.encode = true
 qcom.hw.aac.encoder=true
 
 bluetooth.hfp.client=1
+qcom.bt.dev_power_class=2
 
 debug.egl.hw=1
 
