@@ -106,3 +106,10 @@ else
 fi
 croot
 
+cd device/ZTE/X9180
+if [ "$WITH_EXTERNAL_WRITABLE" = "1" ]; then
+	git am ../../../device/ZTE/X9180/patches/enable-writing-to-external-card.patch || git am --abort
+else
+	echo '[external writable] IGNORED';
+fi
+croot	
