@@ -108,8 +108,13 @@ croot
 
 cd device/ZTE/X9180
 if [ "$WITH_EXTERNAL_WRITABLE" = "1" ]; then
+if grep -q "\-w 1023" rootdir/etc/init.qcom.rc
+then
 	git am ../../../device/ZTE/X9180/patches/enable-writing-to-external-card.patch || git am --abort
+else
+	echo '[external writable] Init script already patched';
+fi
 else
 	echo '[external writable] IGNORED';
 fi
-croot	
+croot
