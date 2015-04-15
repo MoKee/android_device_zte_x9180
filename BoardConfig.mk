@@ -209,6 +209,7 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP := "ap"
 TARGET_USES_QCOM_WCNSS_QMI := true
 TARGET_PROVIDES_WCNSS_QMI := true
+BOARD_HAS_QCOM_WLAN_SDK := true
 
 # inherit from the proprietary version
 -include vendor/ZTE/X9180/BoardConfigVendor.mk

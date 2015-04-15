@@ -19,7 +19,6 @@ bin/usbhub_init
 bin/wdsdaemon
 
 -lib/libcnefeatureconfig.so
--lib/libqsap_sdk.so
 
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
