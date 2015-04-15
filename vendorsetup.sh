@@ -96,3 +96,13 @@ else
     git am ../../../device/ZTE/X9180/patches/noise-suppression-telephony.patch || git am --abort
 fi
 croot
+
+cd packages/apps/Contacts
+if grep -q "WRITE_MEDIA_STORAGE" AndroidManifest.xml
+then
+    echo '[vcards export] Contacts already patched';
+else
+    git am ../../../device/ZTE/X9180/patches/export-vcards-contacts.patch || git am --abort
+fi
+croot
+
