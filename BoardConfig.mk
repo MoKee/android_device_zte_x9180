@@ -189,7 +189,8 @@ BOARD_SEPOLICY_UNION += \
     kernel.te \
     untrusted_app.te \
     platform_app.te \
-    healthd.te
+    healthd.te \
+    installd.te
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
