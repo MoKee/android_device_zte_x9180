@@ -19,9 +19,6 @@ LOCAL_PATH := device/ZTE/X9180
 
 PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl , $(PRODUCT_COPY_FILES))
 
-#Use dlmalloc instead of jemalloc for mallocs
-MALLOC_IMPL := dlmalloc
-
 #Disable memcpy_base.S optimization
 TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
 
