@@ -246,6 +246,7 @@ PRODUCT_PACKAGES += \
     init.qcom.early_boot.sh \
     init.qcom.factory.sh \
     init.qcom.rc \
+    init.qcom.sdcard.rc \
     init.recovery.qcom.rc \
     init.qcom.sh \
     init.qcom.ssr.sh \
