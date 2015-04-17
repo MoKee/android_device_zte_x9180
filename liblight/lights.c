@@ -46,7 +46,7 @@
 #define PM_PWM_LUT_USE_RAW_VALUE	0x40
 
 #define BREATH_LED_BRIGHTNESS_NOTIFICATION	"0,5,10,15,20,26,31,36,41,46,51,56,61,66,71,77,82,87,92,97,102,107,112,117,122,128,133,138,143,148,153,158,163,168,173,179,184,189,194,199,204,209,214,219,224,230,235,240,245,250,255"
-#define BREATH_LED_BRIGHTNESS_BUTTONS		"0,15"
+#define BREATH_LED_BRIGHTNESS_BUTTONS		"0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"
 #define BREATH_LED_BRIGHTNESS_BATTERY		"0,50"
 #define BREATH_LED_BRIGHTNESS_CHARGING		"20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60"
 
@@ -257,13 +257,13 @@ set_breath_light_locked(int event_source,
     } else {
 	active_states &= ~event_source;
 	if(active_states == 0) {
-//	    if(event_source == BREATH_SOURCE_BUTTONS && last_state == BREATH_SOURCE_BUTTONS) {
-//		ALOGV("[LIGHTS.MSM8226] disabling buttons backlight\n");
-//		write_int(BREATH_LED_LUT_FLAGS, (int)PM_PWM_LUT_NO_TABLE); // smoothly turn led off
-//	    } else {
+	    if(event_source == BREATH_SOURCE_BUTTONS && last_state == BREATH_SOURCE_BUTTONS) {
+		ALOGV("[LIGHTS.MSM8226] disabling buttons backlight\n");
+		write_int(BREATH_LED_LUT_FLAGS, (int)PM_PWM_LUT_NO_TABLE); // smoothly turn led off
+	    } else {
 		ALOGV("[LIGHTS.MSM8226] disabling blinking\n");
 		write_int(BREATH_LED_BLINK, 0); // just turn led off
-//	    }
+	    }
 	    last_state = BREATH_SOURCE_NONE;
 	    return 0;
 	}
