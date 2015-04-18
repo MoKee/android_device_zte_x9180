@@ -21,4 +21,7 @@
     <string name="su_indicator_summary">Pokaż wskaźnik superuser\'a na pasku stanu, gdy sesja jest aktywna</string>
     <string name="statusbar_exclamation_marks_display">Wskaźnik połączenia danych</string>
     <string name="statusbar_exclamation_marks_desc">Pokaż wykrzykników w pobliżu ikony siły sygnału, gdy połączenie danych nie jest dostępna</string>
+    <string name="status_bar_toggle_empty_sim_message">Zauważ, że o braku karty SIM</string>
+    <string name="status_bar_toggle_empty_sim_message_summary_off">Ukryj informację, jeśli nie jest zainstalowany SIM</string>
+    <string name="status_bar_toggle_empty_sim_message_summary_on">Pokaż powiadomienie, jeśli nie jest zainstalowany SIM</string>
 </resources>

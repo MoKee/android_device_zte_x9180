@@ -21,4 +21,7 @@
     <string name="su_indicator_summary">Показувати ындикатор суперкористувача(#) в рядку стану, коли він використовується</string>
     <string name="statusbar_exclamation_marks_display">Індикатор підключення до мережі Інтернет</string>
     <string name="statusbar_exclamation_marks_desc">Показувати знаки оклику поруч з індикаторами сигналу, коли відсутній доступ до мережі Інтернет</string>
+    <string name="status_bar_toggle_empty_sim_message">Зверніть увагу, що SIM відсутня</string>
+    <string name="status_bar_toggle_empty_sim_message_summary_off">Приховати повідомлення, якщо не встановлено SIM</string>
+    <string name="status_bar_toggle_empty_sim_message_summary_on">Показати повідомлення, якщо не встановлено SIM</string>
 </resources>
