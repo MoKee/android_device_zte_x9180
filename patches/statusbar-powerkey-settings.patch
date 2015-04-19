@@ -1,0 +1,31 @@
+From 23d23498bc1315f298e4c5059de44817a71c4f7d Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Fri, 3 Apr 2015 15:14:47 +0300
+Subject: [PATCH] Statusbar powerkey. Initial commit (packages/apps/Settings patch)
+
+Change-Id: I13eb9f06f80ff0c6a9ad6064a889fb5d7cee8202
+---
+ res/xml/status_bar_settings.xml | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/res/xml/status_bar_settings.xml b/res/xml/status_bar_settings.xml
+index ccd01b5..d7df7b2 100644
+--- a/res/xml/status_bar_settings.xml
++++ b/res/xml/status_bar_settings.xml
+@@ -85,6 +85,13 @@
+         android:summary="@string/su_indicator_summary"
+         android:defaultValue="true" />
+ 
++    <!-- statusbar_powerkey v01 -->
++    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
++        android:key="statusbar_powerkey"
++        android:title="@string/statusbar_powerkey_display"
++        android:summary="@string/statusbar_powerkey_desc"
++        android:defaultValue="false" />
++
+     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+         android:key="status_bar_notif_count"
+         android:title="@string/status_bar_notif_count_title"
+-- 
+1.9.1
+

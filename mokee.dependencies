@@ -1,0 +1,22 @@
+[
+  {
+    "repository": "android_device_qcom_common",
+    "target_path": "device/qcom/common"
+  },
+  {
+    "repository": "android_hardware_qcom_fm",
+    "target_path": "hardware/qcom/fm"
+  },
+  {
+    "remote": "gitlab",
+    "repository": "X9180/android_kernel_zte_x9180.git",
+    "target_path": "kernel/ZTE/X9180",
+    "revision": "cm-12.1"
+  },
+  {
+    "remote": "gitlab",
+    "repository": "X9180/android_device_zte_x9180_proprietary.git",
+    "target_path": "vendor/ZTE/X9180",
+    "revision": "cm-12.1"
+  }
+]

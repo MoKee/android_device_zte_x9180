@@ -1,0 +1,4 @@
+camera.				u:object_r:camera_prop:s0
+persist.storages.planned_swap	u:object_r:x9180_prop:s0
+persist.zram.planned_size	u:object_r:x9180_prop:s0
+persist.cpu.gov.		u:object_r:x9180_prop:s0

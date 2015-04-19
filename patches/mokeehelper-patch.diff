@@ -1,0 +1,14 @@
+diff --git a/MoKeeHelper/src/com/mokee/helper/utils/Utils.java b/MoKeeHelper/src/com/mokee/helper/utils/Utils.java
+index b6e854f..6524627 100644
+--- a/MoKeeHelper/src/com/mokee/helper/utils/Utils.java
++++ b/MoKeeHelper/src/com/mokee/helper/utils/Utils.java
+@@ -176,6 +176,9 @@ public class Utils {
+     }
+ 
+     private static String getStorageMountpoint(Context context) {
++        String custom_path = SystemProperties.get("ro.recovery.sdpath","auto");
++        if(!"auto".equals(custom_path))
++            return custom_path;
+         StorageManager sm = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
+         StorageVolume[] volumes = sm.getVolumeList();
+         String primaryStoragePath = Environment.getExternalStorageDirectory().getAbsolutePath();

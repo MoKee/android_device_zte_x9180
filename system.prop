@@ -1,0 +1,71 @@
+# system.prop for X9180
+
+# radio
+rild.libargs=-d /dev/smd0
+rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+
+tunnel.audio.encode = true
+
+qcom.hw.aac.encoder=true
+
+bluetooth.hfp.client=1
+qcom.bt.dev_power_class=2
+
+debug.egl.hw=1
+
+DEVICE_PROVISIONED=1
+dev.pm.dyn_samplingrate=1
+
+media.stagefright.enable-aac=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
+mm.enable.qcom_parser=37491
+
+mmp.enable.3g2=true
+
+persist.camera.tintless=enable
+persist.cne.feature=1
+persist.data.netmgrd.qos.enable=true
+persist.demo.hdmirotationlock=false
+persist.factory.loopback_volume=12
+persist.factory.mic_number=13
+persist.factory.nfc=false
+persist.factory.receiver_volume=10
+persist.fuse_sdcard=false
+
+persist.radio.multisim.config=dsds
+
+persist.sys.bluetooth.name=ZTE V5
+
+persist.sys.timezone=Europe/Moskow
+persist.sys.wifi.p2pname=ZTE V5
+persist.sys.wifi.softapname=ZTE V5
+
+ril.subscription.types=NV,RUIM
+
+ro.hdmi.enable=true
+
+ro.product.model=X9180
+ro.product.device=X9180
+
+telephony.lteOnCdmaDevice=1
+
+vidc.debug.level=1
+
+mm.enable.vsync.render=1
+
+#property to support SSR && AP RESET when kernel panic.(1,1) to disable, (3,0) to enable
+persist.sys.ssr.restart_level=3
+persist.sys.ap.restart_level=0
+
+ro.min_freq_0=787200
+
+persist.sys.strictmode.disable=true
+
+persist.data.qmi.adb_logmask=0
+
+persist.cpu.gov.powersave=smartmax
+persist.cpu.gov.balanced=interactive

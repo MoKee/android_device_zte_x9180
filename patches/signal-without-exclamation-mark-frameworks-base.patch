@@ -1,0 +1,113 @@
+From a3afda3e497923569ea38bf144e6294d5901c96c Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Sat, 4 Apr 2015 18:46:41 +0300
+Subject: [PATCH] Add the ability to hide exclamation marks from signal
+ strength
+
+Change-Id: Ia0e0fd4fe6c279243e49e4d300a6703f9c8f8ac5
+---
+ .../policy/MSimNetworkControllerImpl.java          | 27 ++++++++++++++++++----
+ 1 file changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
+index 3a7a39e..8153461 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
+@@ -74,6 +74,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+     private int mUserId;
+     private SettingsObserver mSettingsObserver;
+ 
++    private boolean mShowExclamationMarks = true;
++
+     // telephony
+     boolean[] mMSimDataConnected;
+     IccCardConstants.State[] mMSimState;
+@@ -775,7 +777,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+                 }
+ 
+                 mMSimPhoneSignalIconId[phoneId] =
+-                        TelephonyIcons.getSignalStrengthIcon(phoneId, mInetCondition,
++                        TelephonyIcons.getSignalStrengthIcon(phoneId, mShowExclamationMarks?mInetCondition:1,
+                         iconLevel, isRoaming(phoneId));
+ 
+                 mMSimContentDescriptionPhoneSignal[phoneId] =
+@@ -785,7 +787,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+ 
+                 if (phoneId == dataSub) {
+                     mQSPhoneSignalIconId = TelephonyIcons
+-                            .QS_TELEPHONY_SIGNAL_STRENGTH[mInetCondition][iconLevel];
++                            .QS_TELEPHONY_SIGNAL_STRENGTH[mShowExclamationMarks?mInetCondition:1][iconLevel];
+                 }
+ 
+                 if (DEBUG) {
+@@ -818,7 +820,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+             if (mIsWimaxEnabled && mWimaxConnected) {
+                 // wimax is a special 4g network not handled by telephony
+                 mMSimDataTypeIconId[phoneId] = R.drawable.stat_sys_data_fully_connected_4g;
+-                mQSDataTypeIconId = TelephonyIcons.QS_DATA_4G[mInetCondition];
++                mQSDataTypeIconId = TelephonyIcons.QS_DATA_4G[mShowExclamationMarks?mInetCondition:1];
+                 mMSimContentDescriptionDataType[phoneId] = mContext.getString(
+                         R.string.accessibility_data_connection_4g);
+             } else {
+@@ -857,7 +859,7 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+         }
+ 
+         if (setQSDataTypeIcon && phoneId == dataSub) {
+-            mQSDataTypeIconId = TelephonyIcons.QS_DATA_R[mInetCondition];
++            mQSDataTypeIconId = TelephonyIcons.QS_DATA_R[mShowExclamationMarks?mInetCondition:1];
+          }
+     }
+ 
+@@ -1533,6 +1535,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+         private boolean mRegistered;
+         private final Uri EMPTY_ICONS_URI = Settings.System.getUriFor(
+                 Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
++        private final Uri EXCLAMATION_MARKS_URI = Settings.System.getUriFor(
++                "statusbar_exclamation_marks");
+ 
+         public SettingsObserver(Handler handler) {
+             super(handler);
+@@ -1544,11 +1548,17 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+                     Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS, 1, mUserId) != 0;
+         }
+ 
++        public boolean showExclamationMarks() {
++            return Settings.System.getIntForUser(mResolver,
++                    "statusbar_exclamation_marks", 1, mUserId) != 0;
++        }
++
+         public void register() {
+             if (mRegistered) {
+                 mResolver.unregisterContentObserver(this);
+             }
+             mResolver.registerContentObserver(EMPTY_ICONS_URI, false, this, mUserId);
++            mResolver.registerContentObserver(EXCLAMATION_MARKS_URI, false, this, mUserId);
+             updateSettings();
+         }
+ 
+@@ -1556,6 +1566,8 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+         public void onChange(boolean selfChange, Uri uri) {
+             if (EMPTY_ICONS_URI.equals(uri)) {
+                 updateSettings();
++            } else if(EXCLAMATION_MARKS_URI.equals(uri)) {
++                updateSettings();
+             }
+         }
+ 
+@@ -1564,6 +1576,13 @@ public class MSimNetworkControllerImpl extends NetworkControllerImpl {
+             for (MSimSignalCluster cluster : mSimSignalClusters) {
+                 cluster.setShowEmptySimSlots(showEmptySlots);
+             }
++            mShowExclamationMarks = showExclamationMarks();
++            for (int i = 0; i < mPhoneCount; i++) {
++                updateTelephonySignalStrength(i);
++                updateDataNetType(i);
++                updateDataIcon(i);
++                refreshViews(i);
++            }
+         }
+     }
+ }
+-- 
+2.1.4
+

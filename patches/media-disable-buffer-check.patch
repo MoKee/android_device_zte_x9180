@@ -1,0 +1,28 @@
+From fc789f7f27353f934faff56122b91af446467262 Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Mon, 30 Mar 2015 18:15:03 +0300
+Subject: [PATCH 1/2] HACK: mm-video: vidc: make video recording AND playback
+ work for now
+
+Change-Id: I282a0c1d410d85048367574f84c68ae33692a141
+---
+ mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp b/mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
+index 4af17c0..ad3b328 100644
+--- a/mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
++++ b/mm-video-v4l2/vidc/vdec/src/omx_vdec_msm8974.cpp
+@@ -4376,7 +4376,9 @@ OMX_ERRORTYPE  omx_vdec::use_output_buffer(
+                 DEBUG_PRINT_ERROR("Insufficient sized buffer given for playback,"
+                         " expected %u, got %lu",
+                         drv_ctx.op_buf.buffer_size, (OMX_U32)handle->size);
++#if !defined(QCOM_MEDIA_DISABLE_BUFFER_SIZE_CHECK)
+                 return OMX_ErrorBadParameter;
++#endif
+             }
+ 
+             drv_ctx.op_buf.buffer_size = handle->size;
+-- 
+2.1.4
+
