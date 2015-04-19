@@ -32,7 +32,7 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on fs
-    mount_all fstab.X9180
+    mount_all fstab.x9180
     wait /dev/block/platform/msm_sdcc.1/by-name/persist
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
     restorecon_recursive /persist

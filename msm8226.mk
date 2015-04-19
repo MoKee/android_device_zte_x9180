@@ -228,7 +228,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.rc \
-    fstab.X9180 \
+    fstab.x9180 \
     fstab.sd \
     fstab.int \
     fstab.zram_64 \

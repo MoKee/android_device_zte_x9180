@@ -1,4 +1,4 @@
-# system.prop for X9180
+# system.prop for x9180
 
 # radio
 rild.libargs=-d /dev/smd0
@@ -47,9 +47,6 @@ persist.sys.wifi.softapname=ZTE V5
 ril.subscription.types=NV,RUIM
 
 ro.hdmi.enable=true
-
-ro.product.model=X9180
-ro.product.device=X9180
 
 telephony.lteOnCdmaDevice=1
 
