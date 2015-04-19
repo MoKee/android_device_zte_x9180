@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
--include vendor/ZTE/X9180/BoardConfigVendor.mk
+-include vendor/zte/x9180/BoardConfigVendor.mk
 
-LOCAL_PATH := device/ZTE/X9180
+LOCAL_PATH := device/zte/x9180
 
 PRODUCT_COPY_FILES := $(filter-out frameworks/base/data/keyboards/Generic.kl:system/usr/keylayout/Generic.kl , $(PRODUCT_COPY_FILES))
 
@@ -53,7 +53,7 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/recovery.fstab
 
 BOARD_VENDOR := zte-qcom
 
-TARGET_SPECIFIC_HEADER_PATH := device/ZTE/X9180/include
+TARGET_SPECIFIC_HEADER_PATH := device/zte/x9180/include
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8226
@@ -97,7 +97,7 @@ BOARD_KERNEL_BASE := 0x0000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x2000000 --tags_offset 0x1e00000
-TARGET_KERNEL_SOURCE := kernel/ZTE/X9180
+TARGET_KERNEL_SOURCE := kernel/zte/x9180
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -125,13 +125,8 @@ BLUETOOTH_HCI_USE_MCT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROVIDES_CAMERA_HAL := true
 
-# CMHW
-ifneq ($(CM_VERSION),)
-    BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
-endif
-ifneq ($(MK_VERSION),)
-    BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
-endif
+# MKHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/etc/egl.cfg
@@ -177,7 +172,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 -include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
-    device/ZTE/X9180/sepolicy
+    device/zte/x9180/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     servicemanager.te \
@@ -212,4 +207,4 @@ TARGET_PROVIDES_WCNSS_QMI := true
 BOARD_HAS_QCOM_WLAN_SDK := true
 
 # inherit from the proprietary version
--include vendor/ZTE/X9180/BoardConfigVendor.mk
+-include vendor/zte/x9180/BoardConfigVendor.mk

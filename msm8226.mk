@@ -16,7 +16,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product-if-exists, vendor/ZTE/X9180/X9180-vendor.mk)
+$(call inherit-product-if-exists, vendor/zte/x9180/x9180-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -211,9 +211,6 @@ PRODUCT_PACKAGES += \
     libHevcSwDecoder \
     libstagefrighthw \
     qcmediaplayer
-
-PRODUCT_PACKAGES += \
-    X9180Settings
 
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
