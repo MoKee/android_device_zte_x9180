@@ -48,8 +48,8 @@ ril.subscription.types=NV,RUIM
 
 ro.hdmi.enable=true
 
-ro.product.model=x9180
-ro.product.device=x9180
+ro.product.model=X9180
+ro.product.device=X9180
 
 telephony.lteOnCdmaDevice=1
 
