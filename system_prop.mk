@@ -86,10 +86,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.forbid_mount=/persist,/firmware
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.locale.language=ru \
-    ro.product.locale.region=RU
-
-PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=0,1
 
 PRODUCT_PROPERTY_OVERRIDES += \
