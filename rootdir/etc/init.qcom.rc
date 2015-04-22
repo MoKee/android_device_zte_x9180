@@ -308,6 +308,10 @@ on boot
     chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcal_val
     chmod 0644 /sys/devices/platform/kcal_ctrl.0/kcal_cont
 
+    chmod 0644 /sys/devices/virtual/misc/soundcontrol/highperf_enabled
+    chown system system /sys/devices/virtual/misc/soundcontrol/highperf_enabled
+    write /sys/devices/virtual/misc/soundcontrol/highperf_enabled 1
+
     #hall_device
     chown system system /sys/class/hall_device/hall_device/enable
 
