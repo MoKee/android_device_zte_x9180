@@ -61,7 +61,7 @@ index 22b5b72..0d7b3e7 100644
          android:summary="@string/dtmf_tones_summary"
          android:entries="@array/dtmf_tone_entries"
          android:entryValues="@array/dtmf_tone_values"/>
-+    
++
 +    <SwitchPreference
 +        android:key="button_noise_suppression_key"
 +        android:title="@string/noise_suppression_title"
