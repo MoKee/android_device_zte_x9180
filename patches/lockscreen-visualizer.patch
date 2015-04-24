@@ -1,0 +1,33 @@
+From 6cea68eaebb9f19884ff6ae0aa332cee10496c4b Mon Sep 17 00:00:00 2001
+From: proDOOMman <prodoomman@gmail.com>
+Date: Fri, 24 Apr 2015 14:28:31 +0300
+Subject: [PATCH] SysUI: Add lockscreen visualizer for MSIM devices
+
+Change-Id: Iba83f34fbb731d9a13c9c3514e31537ac51cd0f2
+---
+ packages/SystemUI/res/layout/msim_super_status_bar.xml | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/packages/SystemUI/res/layout/msim_super_status_bar.xml b/packages/SystemUI/res/layout/msim_super_status_bar.xml
+index 1047fe7..116453c 100644
+--- a/packages/SystemUI/res/layout/msim_super_status_bar.xml
++++ b/packages/SystemUI/res/layout/msim_super_status_bar.xml
+@@ -43,6 +43,15 @@
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="invisible" />
++        <com.pheelicks.visualizer.VisualizerView
++                   android:id="@+id/visualizerView"
++                   android:gravity="bottom"
++                   android:layout_gravity="bottom"
++                   android:layout_width="match_parent"
++                   android:layout_height="match_parent"
++                   android:clipChildren="false"
++                   android:clipToPadding="false"
++                   android:visibility="visible"/>
+     </com.android.systemui.statusbar.BackDropView>
+ 
+     <com.android.systemui.statusbar.ScrimView android:id="@+id/scrim_behind"
+-- 
+2.1.4
+

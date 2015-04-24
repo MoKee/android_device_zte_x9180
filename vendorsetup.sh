@@ -47,6 +47,12 @@ then
 else
     git am ../../device/ZTE/X9180/patches/noise-suppression-frameworks-base.patch || git am --abort
 fi
+if grep -q "VisualizerView" packages/SystemUI/res/layout/msim_super_status_bar.xml
+then
+    echo '[lockscreen visualizer] Frameworks/base already patched';
+else
+    git am ../../device/ZTE/X9180/patches/lockscreen-visualizer.patch || git am --abort
+fi
 croot
 
 cd packages/apps/Settings
