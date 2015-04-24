@@ -364,4 +364,7 @@
     <!-- Configuration to enable non-default PDP during IWLAN -->
     <bool name="config_feature_iwlan_enabled">true</bool>
 
+    <!-- Is the device capable of hot swapping an ICC Card -->
+    <bool name="config_hotswapCapable">true</bool>
+
 </resources>
