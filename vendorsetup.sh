@@ -41,12 +41,6 @@ then
 else
     git am ../../device/ZTE/X9180/patches/signal-without-exclamation-mark-frameworks-base.patch || git am --abort
 fi
-if grep -q "NOISE_SUPPRESSION" core/java/android/provider/Settings.java
-then
-    echo '[noise suppression] Frameworks/base already patched';
-else
-    git am ../../device/ZTE/X9180/patches/noise-suppression-frameworks-base.patch || git am --abort
-fi
 croot
 
 cd packages/apps/Settings
@@ -76,24 +70,6 @@ then
     echo '[buffer check] Media-caf mm-video-v4l2 already patched';
 else
     git am ../../../../device/ZTE/X9180/patches/media-disable-buffer-check.patch || git am --abort
-fi
-croot
-
-cd packages/services/Telecomm
-if grep -q "turnOnNoiseSuppression" src/com/android/server/telecom/CallAudioManager.java
-then
-    echo '[noise suppression] Telecomm service already patched';
-else
-    git am ../../../device/ZTE/X9180/patches/noise-suppression-telecomm.patch || git am --abort
-fi
-croot
-
-cd packages/services/Telephony
-if grep -q "BUTTON_NOISE_SUPPRESSION_KEY" src/com/android/phone/CallFeaturesSetting.java
-then
-    echo '[noise suppression] Telephony service already patched';
-else
-    git am ../../../device/ZTE/X9180/patches/noise-suppression-telephony.patch || git am --abort
 fi
 croot
 
