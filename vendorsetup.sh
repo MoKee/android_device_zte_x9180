@@ -1,17 +1,11 @@
 add_lunch_combo cm_X9180-userdebug
 add_lunch_combo cm_X9180-eng
 
-add_lunch_combo nameless_X9180-userdebug
-add_lunch_combo nameless_X9180-eng
-
 add_lunch_combo mk_X9180-userdebug
 add_lunch_combo mk_X9180-eng
 
 add_lunch_combo pac_X9180-userdebug
 add_lunch_combo pac_X9180-eng
-
-add_lunch_combo liquid_X9180-userdebug
-add_lunch_combo liquid_X9180-eng
 
 sh device/ZTE/X9180/update-overlay.sh
 
