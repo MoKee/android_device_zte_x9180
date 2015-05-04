@@ -21,7 +21,7 @@
 *
 */
 
-#define LOG_NDEBUG 1
+#define LOG_NDEBUG 0
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
@@ -110,8 +110,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
-    // original is 512x288,480x288,256x154,432x288,320x240,176x144,0x0, but looks like some resolutions are not supported
-    const char *jpegThumbnailSizeValues = "320x240,176x144,0x0";
     // original is (15000,15000),(24000,24000),(7500,30000),(30000,30000), but max fps on front camera is 14.2
     const char *previewFpsRangeValues = "(7500,30000)";
     const char *previewFpsRange = "7500,30000";
@@ -125,29 +123,6 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
     if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
 	videoMode = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
-    }
-
-    if(params.get(android::CameraParameters::KEY_SUPPORTED_JPEG_THUMBNAIL_SIZES)) {    
-	params.set(android::CameraParameters::KEY_SUPPORTED_JPEG_THUMBNAIL_SIZES,
-		    jpegThumbnailSizeValues);
-    }
-
-    if(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_WIDTH)) {
-      if(strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_WIDTH), "320") &&
-	strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_WIDTH), "176") &&
-	strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_WIDTH), "0")) {
-	params.set(android::CameraParameters::KEY_JPEG_THUMBNAIL_WIDTH,
-		   "320");
-	}
-    }
-
-    if(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_HEIGHT)) {
-      if(strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_HEIGHT), "240") &&
-	strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_HEIGHT), "144") &&
-	strcmp(params.get(android::CameraParameters::KEY_JPEG_THUMBNAIL_HEIGHT), "0")) {
-	params.set(android::CameraParameters::KEY_JPEG_THUMBNAIL_HEIGHT,
-		   "240");
-	}
     }
 
     if(ID_CAMERA_FRONT == id) {
@@ -175,10 +150,6 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
 
     bool videoMode = false;
 
-    bool flashAuto = false;
-    bool flashOn = false;
-    bool hdrMode = false;
-
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
@@ -195,15 +166,13 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
 */
 
     if(videoMode) {
-        if(!params.get(android::CameraParameters::KEY_FOCUS_MODE) ||
-          !strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "continuous-picture")) {
-            params.set(android::CameraParameters::KEY_FOCUS_MODE, "continuous-video");
-          }
+        params.set("video-flip", "off");
+        params.set("video-exposure-to-1080p", "0");
+        params.set("snapshot_mirror", "off");
     } else {
-        if(!params.get(android::CameraParameters::KEY_FOCUS_MODE) ||
-          !strcmp(params.get(android::CameraParameters::KEY_FOCUS_MODE), "continuous-video")) {
-            params.set(android::CameraParameters::KEY_FOCUS_MODE, "continuous-picture");
-        }
+        params.set("ois_key", "1"); // not sure it is used by camera hal, but nubia camera set this property
+        params.set("slow_shutter", "-1");
+        params.set("slow_shutter_addition", "0");
     }
 
     if(needsVideoFix) {

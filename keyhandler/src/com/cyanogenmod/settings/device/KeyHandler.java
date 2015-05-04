@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.view.KeyEvent;
+import android.telephony.TelephonyManager;
 
 import com.android.internal.os.DeviceKeyHandler;
 
@@ -17,6 +18,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private final Context mContext;
     private final PowerManager mPowerManager;
+    private final TelephonyManager mTelephonyManager;
     
     private static long power_button_timestamp = 0;
     private static boolean action_down_consumed = false;
@@ -25,6 +27,7 @@ public class KeyHandler implements DeviceKeyHandler {
     public KeyHandler(Context context) {
         mContext = context;
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
 
@@ -32,7 +35,7 @@ public class KeyHandler implements DeviceKeyHandler {
         boolean consumed = false;
         switch(event.getScanCode()) {
         case KEY_PALM:
-            if (mPowerManager.isScreenOn()) {
+            if (mPowerManager.isScreenOn() && mTelephonyManager.getCallState()==TelephonyManager.CALL_STATE_IDLE) {
                 mPowerManager.goToSleep(SystemClock.uptimeMillis());
             }
             consumed = true;
