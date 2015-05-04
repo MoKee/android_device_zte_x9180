@@ -137,6 +137,9 @@ TARGET_PROVIDES_CAMERA_HAL := true
 ifneq ($(CM_VERSION),)
     BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
 endif
+ifneq ($(BLISS_VERSION),)
+    BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
+endif
 ifneq ($(MK_VERSION),)
     BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 endif
@@ -221,3 +224,22 @@ BOARD_HAS_QCOM_WLAN_SDK := true
 
 # inherit from the proprietary version
 -include vendor/ZTE/X9180/BoardConfigVendor.mk
+
+ifneq ($(BLISS_VERSION),)
+    # BlissPop Config Flags
+    BLISS_WIPE_CACHES := 0
+    TARGET_TC_ROM := 4.8
+    TARGET_TC_KERNEL := 4.8
+    BLISSIFY := true
+    BLISS_O3 := true
+    BLISS_STRICT := false
+    BLISS_GRAPHITE := true
+    BLISS_KRAIT := true
+    BLISS_PIPE := true
+    TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+    TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
+    #SaberMod
+    -include vendor/bliss/config/sm.mk
+endif
+
