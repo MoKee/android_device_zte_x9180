@@ -228,8 +228,8 @@ BOARD_HAS_QCOM_WLAN_SDK := true
 ifneq ($(BLISS_VERSION),)
     # BlissPop Config Flags
     BLISS_WIPE_CACHES := 0
-    TARGET_TC_ROM := 4.8
-    TARGET_TC_KERNEL := 4.8
+    TARGET_TC_ROM := 4.8-sm
+    TARGET_TC_KERNEL := 4.8-sm
     BLISSIFY := true
     BLISS_O3 := true
     BLISS_STRICT := false
