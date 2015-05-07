@@ -23,11 +23,20 @@ then
 else
     git am ../../device/ZTE/X9180/patches/su-icon-frameworks-base.patch || git am --abort
 fi
-if grep -qs "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
-then
-    echo '[statusbar powerkey] Frameworks/base already patched';
+if [ -e "core/res/res/values/bliss_strings.xml" ]; then
+    if grep -qs "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
+    then
+        echo '[statusbar powerkey] Frameworks/base already patched';
+    else
+        git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base-bliss.patch || git am --abort
+    fi
 else
-    git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base.patch || git am --abort
+    if grep -qs "statusbar_powerkey v01" packages/SystemUI/src/com/atx/siyang/PowerKey.java
+    then
+        echo '[statusbar powerkey] Frameworks/base already patched';
+    else
+        git am ../../device/ZTE/X9180/patches/statusbar-powerkey-frameworks-base.patch || git am --abort
+    fi
 fi
 if grep -q "mShowExclamationMarks" packages/SystemUI/src/com/android/systemui/statusbar/policy/MSimNetworkControllerImpl.java
 then
