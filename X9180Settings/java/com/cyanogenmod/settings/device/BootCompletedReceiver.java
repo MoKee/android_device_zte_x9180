@@ -1,4 +1,4 @@
-package com.prodoomman.x9180settings;
+package com.cyanogenmod.settings.device;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -87,5 +87,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        context.startService(new Intent(context, X9180DozeService.class));
     }
 }

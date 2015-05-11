@@ -7,6 +7,9 @@ LOCAL_SRC_FILES := $(call all-java-files-under, java)
 
 LOCAL_PACKAGE_NAME := X9180Settings
 LOCAL_CERTIFICATE := platform
+LOCAL_PRIVILEGED_MODULE := true
+
+LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 include $(BUILD_PACKAGE)
 

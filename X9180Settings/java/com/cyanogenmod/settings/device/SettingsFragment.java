@@ -1,4 +1,4 @@
-package com.prodoomman.x9180settings;
+package com.cyanogenmod.settings.device;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
