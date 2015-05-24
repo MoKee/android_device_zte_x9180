@@ -25,6 +25,8 @@
     <string name="intelliplug_boost_summary"></string>
 
     <!-- Gesture shortcuts -->
+    <string name="ambient_display_title">Ambient display</string>
+
     <string name="screen_gestures_panel_title">Gestures</string>
     <string name="screen_gestures_panel_summary">Use gestures to perform actions</string>
 
