@@ -258,10 +258,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     ueventd.rc
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
