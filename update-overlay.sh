@@ -25,3 +25,10 @@ xmlstarlet ed \
 --insert '/dashboard-categories/dashboard-category[@android:id="@+id/system_section"]/dashboard-tile[not(@android:id)]' \
 --type attr -n android:id -v "@+id/device_settings" \
 ../../../packages/apps/Settings/res/xml/dashboard_categories.xml > overlay/packages/apps/Settings/res/xml/dashboard_categories.xml
+
+if grep -qs cm_updates device_info_settings.xml; then
+  xmlstarlet ed \
+  -u '/PreferenceScreen/PreferenceScreen[@android:key="cm_updates"]/intent/@android:targetPackage' -v "com.ota.updates" \
+  -u '/PreferenceScreen/PreferenceScreen[@android:key="cm_updates"]/intent/@android:targetClass' -v "com.ota.updates.OtaUpdates.activities.MainActivity" \
+  ../../../packages/apps/Settings/res/xml/device_info_settings.xml > overlay/packages/apps/Settings/res/xml/device_info_settings.xml;
+fi

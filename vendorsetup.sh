@@ -7,8 +7,6 @@ add_lunch_combo mk_X9180-eng
 add_lunch_combo pac_X9180-userdebug
 add_lunch_combo pac_X9180-eng
 
-sh device/ZTE/X9180/update-overlay.sh
-
 cd frameworks/base
 if grep -q "ro.storage_list.override" services/core/java/com/android/server/MountService.java
 then
@@ -99,6 +97,8 @@ else
     git am ../../../device/ZTE/X9180/patches/export-vcards-contacts.patch || git am --abort
 fi
 croot
+
+sh device/ZTE/X9180/update-overlay.sh
 
 rm -f out/target/product/X9180/root/init.qcom.sdcard.rc
 rm -rf out/target/product/X9180/obj/ETC/init.qcom.sdcard.rc_intermediates
