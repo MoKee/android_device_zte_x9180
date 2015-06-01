@@ -162,14 +162,10 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
         videoMode = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
     }
 
-/* Manual focus don't work without changes in kernel */
-/* but ZTE don't provides updated sources            */
-/*
-    if (params.get("manual-focus-position")) {
+    if (params.get("manual-focus-position") && params.get("focus-mode") && !strcmp(params.get("focus-mode"), "manual")) {
         params.set("maf_key", params.get("manual-focus-position"));
         params.set("focus-mode", "infinity");
     }
-*/
 
 /*
     if(!videoMode && id==1) {
