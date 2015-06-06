@@ -1,20 +1,20 @@
-From aeac7c7e6248567340c86be6dff7e3b17933b837 Mon Sep 17 00:00:00 2001
+From c6eb5fbc4a745e480a106a18e9f55ae963cfef0f Mon Sep 17 00:00:00 2001
 From: proDOOMman <prodoomman@gmail.com>
 Date: Wed, 1 Apr 2015 22:13:06 +0300
 Subject: [PATCH] Statusbar powerkey. Initial commit (frameworks/base patch)
 
 Change-Id: I8e050ae222c3b4fbdd7b7883568ef4398c59a1f8
 ---
- packages/SystemUI/res/layout/msim_status_bar.xml   |  11 +
+ packages/SystemUI/res/layout/status_bar.xml        |  11 +
  packages/SystemUI/src/com/atx/siyang/PowerKey.java | 279 +++++++++++++++++++++
  2 files changed, 290 insertions(+)
  create mode 100644 packages/SystemUI/src/com/atx/siyang/PowerKey.java
 
-diff --git a/packages/SystemUI/res/layout/msim_status_bar.xml b/packages/SystemUI/res/layout/msim_status_bar.xml
-index 149482e..4869155 100644
---- a/packages/SystemUI/res/layout/msim_status_bar.xml
-+++ b/packages/SystemUI/res/layout/msim_status_bar.xml
-@@ -138,6 +138,17 @@
+diff --git a/packages/SystemUI/res/layout/status_bar.xml b/packages/SystemUI/res/layout/status_bar.xml
+index 3333533..c98bd56 100644
+--- a/packages/SystemUI/res/layout/status_bar.xml
++++ b/packages/SystemUI/res/layout/status_bar.xml
+@@ -136,6 +136,17 @@
              />
      </com.android.keyguard.AlphaOptimizedLinearLayout>
  
@@ -34,7 +34,7 @@ index 149482e..4869155 100644
          android:inflatedId="@+id/ticker"
 diff --git a/packages/SystemUI/src/com/atx/siyang/PowerKey.java b/packages/SystemUI/src/com/atx/siyang/PowerKey.java
 new file mode 100644
-index 0000000..1128f70
+index 0000000..bdc89da
 --- /dev/null
 +++ b/packages/SystemUI/src/com/atx/siyang/PowerKey.java
 @@ -0,0 +1,279 @@
@@ -319,5 +319,5 @@ index 0000000..1128f70
 +}
 \ No newline at end of file
 -- 
-2.1.4
+1.9.1
 
