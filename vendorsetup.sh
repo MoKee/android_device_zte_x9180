@@ -73,12 +73,12 @@ else
     else
         git am --ignore-whitespace ../../../device/ZTE/X9180/patches/statusbar-powerkey-settings.patch || git am --abort
     fi
-    if grep -q "exclamation marks v01" res/xml/status_bar_settings.xml
-    then
-        echo '[signal icons] Settings already patched';
-    else 
-        git am --ignore-whitespace ../../../device/ZTE/X9180/patches/signal-without-exclamation-mark-settings.patch || git am --abort
-    fi
+#    if grep -q "exclamation marks v01" res/xml/status_bar_settings.xml
+#    then
+#        echo '[signal icons] Settings already patched';
+#    else 
+#        git am --ignore-whitespace ../../../device/ZTE/X9180/patches/signal-without-exclamation-mark-settings.patch || git am --abort
+#    fi
 fi
 croot
 
