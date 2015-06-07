@@ -17,12 +17,27 @@
     <string name="tuning_category">Tuning</string>
     <string name="zram_title">ZRam</string>
     <string name="cpugov">Cpu governor</string>
-    <string name="cpugov_balanced">Balanced mode</string>
-    <string name="cpugov_powersave">Powersave mode</string>
+    <string name="cpugov_balanced">Balanced mode - %s</string>
+    <string name="cpugov_powersave">Powersave mode - %s</string>
     <string name="cpu_boost">Cpu frequency boost</string>
     <string name="intelliplug_boost">Cpu cores boost</string>
     <string name="cpu_boost_summary"></string>
     <string name="intelliplug_boost_summary"></string>
+    <string name="dt2w_title">Double tap to wake</string>
+
+    <string name="dt2w_screen_title">Tap by screen action</string>
+    <string name="dt2w_left_title">Tap by left button action</string>
+    <string name="dt2w_middle_title">Tap by middle button action</string>
+    <string name="dt2w_right_title">Tap by right button action</string>
+
+    <string name="dt2w_policy_turn_on">Turn on phone</string>
+    <string name="dt2w_policy_doze">Show notifications</string>
+    <string name="dt2w_policy_camera">Open camera application</string>
+    <string name="dt2w_policy_track_prev">Open previous music track</string>
+    <string name="dt2w_policy_track_next">Open next music track</string>
+    <string name="dt2w_policy_play_pause">Pause/play music</string>
+    <string name="dt2w_policy_torch">Enable torch</string>
+    <string name="dt2w_policy_none">Nothing to do</string>
 
     <!-- Gesture shortcuts -->
     <string name="ambient_display_title">Ambient display</string>

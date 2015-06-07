@@ -36,4 +36,24 @@
     <string-array translatable="false" name="chargelevel_values">
         <item>0</item>
     </string-array>
+    <string-array name="dt2w_policy_names">
+        <item>@string/dt2w_policy_turn_on</item>
+        <item>@string/dt2w_policy_doze</item>
+        <item>@string/dt2w_policy_camera</item>
+        <item>@string/dt2w_policy_track_prev</item>
+        <item>@string/dt2w_policy_track_next</item>
+        <item>@string/dt2w_policy_play_pause</item>
+	<item>@string/dt2w_policy_torch</item>
+	<item>@string/dt2w_policy_none</item>
+    </string-array>
+    <string-array translatable="false" name="dt2w_policy_values">
+        <item>TURN_ON</item>
+        <item>DOZE</item>
+        <item>CAMERA</item>
+        <item>TRACK_PREV</item>
+        <item>TRACK_NEXT</item>
+        <item>PLAY_PAUSE</item>
+        <item>TORCH</item>
+        <item>NONE</item>
+    </string-array>
 </resources>

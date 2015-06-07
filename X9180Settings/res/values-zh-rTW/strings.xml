@@ -17,8 +17,8 @@
     <string name="tuning_category">調節</string>
     <string name="zram_title">ZRam 設置</string>
     <string name="cpugov">Cpu 管理</string>
-    <string name="cpugov_balanced">平衡模式</string>
-    <string name="cpugov_powersave">節能模式</string>
+    <string name="cpugov_balanced">平衡模式 - %s</string>
+    <string name="cpugov_powersave">節能模式 - %s</string>
     <string name="cpu_boost">Cpu 頻率提升</string>
     <string name="intelliplug_boost">Cpu 內核提升</string>
 </resources>

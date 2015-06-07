@@ -8,6 +8,7 @@
             android:entries="@array/main_storage_names"
             android:entryValues="@array/main_storage_values"
             android:defaultValue="int"
+            android:summary="%s"
             >
         </ListPreference>
     </PreferenceCategory>
@@ -19,6 +20,7 @@
             android:entries="@array/zram_names"
             android:entryValues="@array/zram_values"
             android:defaultValue="128"
+            android:summary="%s"
             >
         </ListPreference>
         <ListPreference
@@ -62,6 +64,7 @@
             android:entryValues="@array/chargelevel_values"
             android:defaultValue="0"
             android:dependency="fast_charge"
+            android:summary="%s"
             >
         </ListPreference>
     </PreferenceCategory>
@@ -73,6 +76,47 @@
             android:entries="@array/keys_order_names"
             android:entryValues="@array/keys_order_values"
             android:defaultValue="0"
+            android:summary="%s"
+            >
+        </ListPreference>
+        <Preference
+            android:key="dt2w"
+            android:title="@string/dt2w_title"
+            />
+        <ListPreference
+            android:key="dt2w_screen_policy"
+            android:title="@string/dt2w_screen_title"
+            android:entries="@array/dt2w_policy_names"
+            android:entryValues="@array/dt2w_policy_values"
+            android:defaultValue="TURN_ON"
+            android:summary="%s"
+            >
+        </ListPreference>
+        <ListPreference
+            android:key="dt2w_left_policy"
+            android:title="@string/dt2w_left_title"
+            android:entries="@array/dt2w_policy_names"
+            android:entryValues="@array/dt2w_policy_values"
+            android:defaultValue="TRACK_PREV"
+            android:summary="%s"
+            >
+        </ListPreference>
+        <ListPreference
+            android:key="dt2w_middle_policy"
+            android:title="@string/dt2w_middle_title"
+            android:entries="@array/dt2w_policy_names"
+            android:entryValues="@array/dt2w_policy_values"
+            android:defaultValue="DOZE"
+            android:summary="%s"
+            >
+        </ListPreference>
+        <ListPreference
+            android:key="dt2w_right_policy"
+            android:title="@string/dt2w_right_title"
+            android:entries="@array/dt2w_policy_names"
+            android:entryValues="@array/dt2w_policy_values"
+            android:defaultValue="TRACK_NEXT"
+            android:summary="%s"
             >
         </ListPreference>
         <SwitchPreference

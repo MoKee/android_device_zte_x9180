@@ -17,12 +17,27 @@
     <string name="tuning_category">Производительность</string>
     <string name="zram_title">ZRam</string>
     <string name="cpugov">Управление частотой процессора</string>
-    <string name="cpugov_balanced">Сбалансированный режим</string>
-    <string name="cpugov_powersave">Режим энергосбережения</string>
+    <string name="cpugov_balanced">Сбалансированный режим - %s</string>
+    <string name="cpugov_powersave">Режим энергосбережения - %s</string>
     <string name="cpu_boost">Cpu boost (частота)</string>
     <string name="intelliplug_boost">Cpu boost (активные ядра)</string>
     <string name="cpu_boost_summary">Увеличение минимальной частоты процессора после нажатия на экран</string>
     <string name="intelliplug_boost_summary">Активация дополнительных ядер процессора после нажатия на экран</string>
+    <string name="dt2w_title">Пробуждение двойным касанием</string>
+
+    <string name="dt2w_screen_title">Действие нажатия на экран</string>
+    <string name="dt2w_left_title">Действие нажатия на левую кнопку</string>
+    <string name="dt2w_middle_title">Действие нажатия на среднюю кнопку</string>
+    <string name="dt2w_right_title">Действие нажатия на правую кнопку</string>
+
+    <string name="dt2w_policy_turn_on">Включить телефон</string>
+    <string name="dt2w_policy_doze">Показать уведомления</string>
+    <string name="dt2w_policy_camera">Открыть камеру</string>
+    <string name="dt2w_policy_track_prev">Предыдущий трек</string>
+    <string name="dt2w_policy_track_next">Следующий трек</string>
+    <string name="dt2w_policy_play_pause">Пауза/воспроизведение</string>
+    <string name="dt2w_policy_torch">Фонарик</string>
+    <string name="dt2w_policy_none">Ничего не делать</string>
 
     <!-- Gesture shortcuts -->
     <string name="screen_gestures_panel_title">Жесты</string>

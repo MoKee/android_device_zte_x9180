@@ -17,8 +17,8 @@
     <string name="tuning_category">Modyfikacja</string>
     <string name="zram_title">ZRam</string>
     <string name="cpugov">Ustawienia zarządców procesora</string>
-    <string name="cpugov_balanced">Tryb zbalansowany</string>
-    <string name="cpugov_powersave">Tryb oszczędny</string>
+    <string name="cpugov_balanced">Tryb zbalansowany - %s</string>
+    <string name="cpugov_powersave">Tryb oszczędny - %s</string>
     <string name="cpu_boost">Zwiększenie częstotliwości procesora</string>
     <string name="intelliplug_boost">Zwiększenie rdzeni procesora</string>
 </resources>

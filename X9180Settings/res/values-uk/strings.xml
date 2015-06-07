@@ -17,8 +17,8 @@
     <string name="tuning_category">Оптимізація</string>
     <string name="zram_title">ZRam</string>
     <string name="cpugov">Cpu governor</string>
-    <string name="cpugov_balanced">Збалансований режим</string>
-    <string name="cpugov_powersave">Powersave mode</string>
+    <string name="cpugov_balanced">Збалансований режим - %s</string>
+    <string name="cpugov_powersave">Powersave mode - %s</string>
     <string name="cpu_boost">Підвищення частоти процесора</string>
     <string name="intelliplug_boost">Активація додаткових ядер</string>
 </resources>
