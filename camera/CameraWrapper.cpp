@@ -162,14 +162,10 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
         videoMode = !strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true");
     }
 
-/* Manual focus don't work without changes in kernel */
-/* but ZTE don't provides updated sources            */
-/*
-    if (params.get("manual-focus-position")) {
+    if (params.get("manual-focus-position") && params.get("focus-mode") && !strcmp(params.get("focus-mode"), "manual")) {
         params.set("maf_key", params.get("manual-focus-position"));
         params.set("focus-mode", "infinity");
     }
-*/
 
 /*
     if(!videoMode && id==1) {
@@ -183,8 +179,8 @@ static char *camera_fixup_setparams(int id, const char *settings, struct camera_
         params.set("snapshot_mirror", "off");
     } else {
         params.set("ois_key", "1"); // not sure it is used by camera hal, but nubia camera set this property
-        params.set("slow_shutter", "-1");
-        params.set("slow_shutter_addition", "0");
+//        params.set("slow_shutter", "-1");
+//        params.set("slow_shutter_addition", "0");
     }
 
     if(needsVideoFix) {
