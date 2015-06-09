@@ -97,7 +97,7 @@
             android:title="@string/dt2w_left_title"
             android:entries="@array/dt2w_policy_names"
             android:entryValues="@array/dt2w_policy_values"
-            android:defaultValue="TRACK_PREV"
+            android:defaultValue="DOZE"
             android:summary="%s"
             >
         </ListPreference>
@@ -115,7 +115,7 @@
             android:title="@string/dt2w_right_title"
             android:entries="@array/dt2w_policy_names"
             android:entryValues="@array/dt2w_policy_values"
-            android:defaultValue="TRACK_NEXT"
+            android:defaultValue="DOZE"
             android:summary="%s"
             >
         </ListPreference>

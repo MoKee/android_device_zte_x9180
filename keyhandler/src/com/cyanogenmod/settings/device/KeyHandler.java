@@ -46,9 +46,9 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private Dt2wPolicy dt2w_policy_screen = Dt2wPolicy.TURN_ON;
-    private Dt2wPolicy dt2w_policy_left = Dt2wPolicy.TRACK_PREV;
+    private Dt2wPolicy dt2w_policy_left = Dt2wPolicy.DOZE;
     private Dt2wPolicy dt2w_policy_middle = Dt2wPolicy.DOZE;
-    private Dt2wPolicy dt2w_policy_right = Dt2wPolicy.TRACK_NEXT;
+    private Dt2wPolicy dt2w_policy_right = Dt2wPolicy.DOZE;
 
     private CameraActivationAction cameraAction = null;
     private TorchAction torchAction = null;
