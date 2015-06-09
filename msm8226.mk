@@ -347,7 +347,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     $(LOCAL_PATH)/usr/keylayout/Generic.kl:system/usr/keylayout/Generic.kl
 
-# Changelog
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/etc/CHANGELOG-X9180.txt:system/etc/CHANGELOG-X9180.txt
-
