@@ -28,6 +28,14 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".MediaStateChangedReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
         <service android:name="com.cyanogenmod.settings.device.X9180DozeService"
                  android:permission="X9180DozeService">
         </service>
