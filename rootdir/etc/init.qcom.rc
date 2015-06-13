@@ -49,8 +49,7 @@ on init
     mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
     
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
-    export OTG_STORAGE /storage/usbdisk
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
