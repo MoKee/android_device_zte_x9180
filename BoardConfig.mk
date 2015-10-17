@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+MK_TOOLCHAIN_VARIANT := uber
+
 -include vendor/zte/x9180/BoardConfigVendor.mk
 
 LOCAL_PATH := device/zte/x9180
